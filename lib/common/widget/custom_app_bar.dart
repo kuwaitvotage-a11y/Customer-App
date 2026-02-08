@@ -49,10 +49,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     // Determine back button container color
     final backButtonBgColor = bgColor == AppThemeData.primary200
-        ? Colors.white.withOpacity(0.2)
+        ? Colors.white.withValues(alpha:0.2)
         : (isDarkMode
-            ? AppThemeData.grey200Dark.withOpacity(0.3)
-            : AppThemeData.grey200.withOpacity(0.5));
+            ? AppThemeData.grey200Dark.withValues(alpha:0.3)
+            : AppThemeData.grey200.withValues(alpha:0.5));
 
     // Determine back button icon color
     final backButtonIconColor = bgColor == AppThemeData.primary200

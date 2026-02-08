@@ -44,14 +44,14 @@ class PrivacyPolicyScreen extends StatelessWidget {
                             margin: EdgeInsets.zero,
                             padding: const EdgeInsets.all(20),
                             backgroundColor:
-                                AppThemeData.primary200.withOpacity(0.1),
+                                AppThemeData.primary200.withValues(alpha:0.1),
                             child: Row(
                               children: [
                                 Container(
                                   padding: const EdgeInsets.all(12),
                                   decoration: BoxDecoration(
                                     color: AppThemeData.primary200
-                                        .withOpacity(0.2),
+                                        .withValues(alpha:0.2),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Icon(
@@ -103,7 +103,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                                   color: isDarkMode
                                       ? AppThemeData.grey400Dark
                                       : AppThemeData.grey500,
-                                  fontFamily: 'pop',
+                                  fontFamily: 'Cairo',
                                 ),
                                 "h1": Style(
                                   fontSize: FontSize(24),

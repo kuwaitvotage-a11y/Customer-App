@@ -150,7 +150,7 @@ class SubscriptionListScreen extends StatelessWidget {
                     Container(
                       width: 2,
                       height: 20,
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withValues(alpha:0.3),
                     ),
                     Icon(Icons.location_on, color: Colors.red, size: 20),
                   ],
@@ -210,7 +210,7 @@ class SubscriptionListScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: AppThemeData.primary200.withOpacity(0.1),
+                color: AppThemeData.primary200.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
@@ -260,42 +260,42 @@ class SubscriptionListScreen extends StatelessWidget {
 
     switch (status) {
       case 'active':
-        bgColor = Colors.green.withOpacity(0.1);
+        bgColor = Colors.green.withValues(alpha:0.1);
         textColor = Colors.green;
         displayText = 'ACTIVE'.tr;
         break;
       case 'pending':
-        bgColor = Colors.orange.withOpacity(0.1);
+        bgColor = Colors.orange.withValues(alpha:0.1);
         textColor = Colors.orange;
         displayText = 'PENDING PAYMENT'.tr;
         break;
       case 'pending_approval':
-        bgColor = Colors.amber.withOpacity(0.1);
+        bgColor = Colors.amber.withValues(alpha:0.1);
         textColor = Colors.amber.shade700;
         displayText = 'PENDING APPROVAL'.tr;
         break;
       case 'rejected':
-        bgColor = Colors.red.withOpacity(0.1);
+        bgColor = Colors.red.withValues(alpha:0.1);
         textColor = Colors.red;
         displayText = 'REJECTED'.tr;
         break;
       case 'completed':
-        bgColor = Colors.blue.withOpacity(0.1);
+        bgColor = Colors.blue.withValues(alpha:0.1);
         textColor = Colors.blue;
         displayText = 'COMPLETED'.tr;
         break;
       case 'cancelled':
-        bgColor = Colors.red.withOpacity(0.1);
+        bgColor = Colors.red.withValues(alpha:0.1);
         textColor = Colors.red;
         displayText = 'CANCELLED'.tr;
         break;
       case 'scheduled':
-        bgColor = Colors.purple.withOpacity(0.1);
+        bgColor = Colors.purple.withValues(alpha:0.1);
         textColor = Colors.purple;
         displayText = 'SCHEDULED'.tr;
         break;
       default:
-        bgColor = Colors.grey.withOpacity(0.1);
+        bgColor = Colors.grey.withValues(alpha:0.1);
         textColor = Colors.grey;
         displayText = status.toUpperCase().tr;
     }
@@ -322,22 +322,22 @@ class SubscriptionListScreen extends StatelessWidget {
 
     switch (status) {
       case 'paid':
-        bgColor = Colors.green.withOpacity(0.1);
+        bgColor = Colors.green.withValues(alpha:0.1);
         textColor = Colors.green;
         label = 'PAID'.tr;
         break;
       case 'pending':
-        bgColor = Colors.orange.withOpacity(0.1);
+        bgColor = Colors.orange.withValues(alpha:0.1);
         textColor = Colors.orange;
         label = 'UNPAID'.tr;
         break;
       case 'refunded':
-        bgColor = Colors.grey.withOpacity(0.1);
+        bgColor = Colors.grey.withValues(alpha:0.1);
         textColor = Colors.grey;
         label = 'REFUNDED'.tr;
         break;
       default:
-        bgColor = Colors.grey.withOpacity(0.1);
+        bgColor = Colors.grey.withValues(alpha:0.1);
         textColor = Colors.grey;
         label = status.toUpperCase().tr;
     }
@@ -397,7 +397,7 @@ class SubscriptionListScreen extends StatelessWidget {
             Icon(
               Icons.block,
               size: 80,
-              color: Colors.orange.withOpacity(0.7),
+              color: Colors.orange.withValues(alpha:0.7),
             ),
             const SizedBox(height: 16),
             CustomText(

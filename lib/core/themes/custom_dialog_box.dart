@@ -54,7 +54,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             visible: widget.title.isNotEmpty,
             child: Text(
               widget.title,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, fontFamily: 'Cairo'),
             ),
           ),
           const SizedBox(
@@ -64,7 +64,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             visible: widget.descriptions.isNotEmpty,
             child: Text(
               widget.descriptions,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14, fontFamily: 'Cairo'),
               textAlign: TextAlign.center,
             ),
           ),

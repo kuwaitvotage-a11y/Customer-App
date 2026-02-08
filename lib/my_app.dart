@@ -17,6 +17,7 @@ import 'package:cabme/service/api.dart';
 import 'package:cabme/core/themes/styles.dart';
 import 'package:cabme/core/utils/Preferences.dart';
 import 'package:cabme/core/utils/dark_theme_provider.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -670,6 +671,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             navigatorKey: navigatorKey,
             title: 'Mshwar',
             debugShowCheckedModeBanner: false,
+            // Device Preview integration
+            locale: DevicePreview.locale(context) ?? currentLocale,
+            builder: (context, child) {
+              // Wrap with Device Preview builder
+              child = DevicePreview.appBuilder(context, child);
+              return Directionality(
+                textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
+                child: EasyLoading.init()(context, child),
+              );
+            },
             theme: Styles.themeData(
               themeChangeProvider.darkTheme == 0
                   ? true
@@ -678,7 +689,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                       : themeChangeProvider.getSystemThem(),
               context,
             ),
-            locale: currentLocale,
             fallbackLocale: LocalizationService.locale,
             translations: LocalizationService(),
             // Add Material localizations for date picker, time picker, etc.
@@ -692,12 +702,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               Locale('ar', 'AE'),
               Locale('ur', 'PK'),
             ],
-            builder: (context, child) {
-              return Directionality(
-                textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
-                child: EasyLoading.init()(context, child),
-              );
-            },
             home: GetBuilder(
               init: SettingsController(),
               builder: (controller) {

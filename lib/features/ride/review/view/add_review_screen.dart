@@ -42,7 +42,7 @@ class AddReviewScreen extends StatelessWidget {
                   LightBorderedCard(
                     margin: EdgeInsets.zero,
                     padding: const EdgeInsets.all(20),
-                    backgroundColor: AppThemeData.primary200.withOpacity(0.1),
+                    backgroundColor: AppThemeData.primary200.withValues(alpha:0.1),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,7 +51,7 @@ class AddReviewScreen extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: AppThemeData.primary200.withOpacity(0.2),
+                                color: AppThemeData.primary200.withValues(alpha:0.2),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Icon(

@@ -43,14 +43,14 @@ class VehicleSelectionCard extends StatelessWidget {
             border: Border.all(
               width: 1.5,
               color: isSelected
-                  ? AppThemeData.primary200.withOpacity(0.5)
+                  ? AppThemeData.primary200.withValues(alpha:0.5)
                   : (isDarkMode
                       ? AppThemeData.grey200Dark
                       : AppThemeData.grey200),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.04),
+                color: Colors.black.withValues(alpha:0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
                 spreadRadius: 0,

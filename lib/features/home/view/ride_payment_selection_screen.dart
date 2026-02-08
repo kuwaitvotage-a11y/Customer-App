@@ -168,8 +168,8 @@ class _RidePaymentSelectionScreenState
                   height: 1,
                   thickness: 1,
                   color: isDarkMode
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                 ),
                 RadioButtonCustom(
                   subName: Constant().amountShow(
@@ -204,8 +204,8 @@ class _RidePaymentSelectionScreenState
                   height: 1,
                   thickness: 1,
                   color: isDarkMode
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                 ),
                 RadioButtonCustom(
                   isEnabled: true,
@@ -285,10 +285,10 @@ class _RidePaymentSelectionScreenState
                           vertical: 8,
                         ),
                         decoration: BoxDecoration(
-                          color: AppThemeData.success300.withOpacity(0.15),
+                          color: AppThemeData.success300.withValues(alpha:0.15),
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: AppThemeData.success300.withOpacity(0.3),
+                            color: AppThemeData.success300.withValues(alpha:0.3),
                             width: 1,
                           ),
                         ),
@@ -359,7 +359,7 @@ class _RidePaymentSelectionScreenState
                     : AppThemeData.surface50,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha:0.05),
                     blurRadius: 20,
                     offset: const Offset(0, -4),
                   ),

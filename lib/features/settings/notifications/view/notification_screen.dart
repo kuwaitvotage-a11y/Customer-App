@@ -110,8 +110,8 @@ class NotificationScreen extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: isDarkMode
-                  ? AppThemeData.grey200Dark.withOpacity(0.3)
-                  : AppThemeData.grey200.withOpacity(0.5),
+                  ? AppThemeData.grey200Dark.withValues(alpha:0.3)
+                  : AppThemeData.grey200.withValues(alpha:0.5),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -147,7 +147,7 @@ class NotificationScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: Colors.red.withOpacity(0.1),
+              color: Colors.red.withValues(alpha:0.1),
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -211,8 +211,8 @@ class NotificationScreen extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: isDarkMode
-                ? Colors.black.withOpacity(0.2)
-                : Colors.black.withOpacity(0.05),
+                ? Colors.black.withValues(alpha:0.2)
+                : Colors.black.withValues(alpha:0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -233,7 +233,7 @@ class NotificationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: notification.categoryColor.withOpacity(0.1),
+                    color: notification.categoryColor.withValues(alpha:0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -271,7 +271,7 @@ class NotificationScreen extends StatelessWidget {
                                       horizontal: 6, vertical: 2),
                                   decoration: BoxDecoration(
                                     color: notification.categoryColor
-                                        .withOpacity(0.15),
+                                        .withValues(alpha:0.15),
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: CustomText(
@@ -352,7 +352,7 @@ class NotificationScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: notification.categoryColor.withOpacity(0.1),
+                    color: notification.categoryColor.withValues(alpha:0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(
@@ -469,7 +469,7 @@ class NotificationScreen extends StatelessWidget {
                   onSelected: (selected) {
                     controller.setCategory(category);
                   },
-                  selectedColor: categoryColor.withOpacity(0.2),
+                  selectedColor: categoryColor.withValues(alpha:0.2),
                   checkmarkColor: categoryColor,
                   labelStyle: TextStyle(
                     color: isSelected

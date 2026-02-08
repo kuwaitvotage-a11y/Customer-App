@@ -132,9 +132,8 @@ class CustomText extends StatelessWidget {
     final isRTL = currentLocale.languageCode == 'ar' ||
         currentLocale.languageCode == 'ur';
 
-    // Use system font for Arabic/Urdu, Poppins for others
-    // System fonts support Arabic/Urdu characters properly
-    final fontFamily = isRTL ? null : 'pop';
+    // Use Cairo font for all languages - it supports Arabic, Urdu, and English
+    final fontFamily = 'Cairo';
 
     return Text(
       text,

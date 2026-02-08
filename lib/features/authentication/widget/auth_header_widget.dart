@@ -53,7 +53,7 @@ class AuthHeaderWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 15,
               fontFamily: AppThemeData.regular,
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha:0.9),
               height: 1.5,
             ),
           ),

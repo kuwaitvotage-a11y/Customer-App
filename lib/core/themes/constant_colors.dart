@@ -48,15 +48,15 @@ class AppThemeData {
   static Color info200 = const Color(0XFF50DAF2);
   static Color loadingBgColor = const Color(0XFFF8F9FB);
 
-  static const String black = 'Switzer-Black';
-  static const String bold = 'Switzer-Bold';
-  static const String extraBold = 'Switzer-Extrabold';
-  static const String extraLight = 'Switzer-Extralight';
-  static const String light = 'Switzer-Italic';
-  static const String medium = 'Switzer-Medium';
-  static const String regular = 'Switzer-Regular';
-  static const String semiBold = 'Switzer-Semibold';
-  static const String thin = 'Switzer-Thin';
+  static const String black = 'Cairo';
+  static const String bold = 'Cairo';
+  static const String extraBold = 'Cairo';
+  static const String extraLight = 'Cairo';
+  static const String light = 'Cairo';
+  static const String medium = 'Cairo';
+  static const String regular = 'Cairo';
+  static const String semiBold = 'Cairo';
+  static const String thin = 'Cairo';
 }
 
 class ConstantColors {

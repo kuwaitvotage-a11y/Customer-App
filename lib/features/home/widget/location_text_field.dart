@@ -169,8 +169,8 @@ class LocationTextField extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: isDeparture
-                ? AppThemeData.primary200.withOpacity(0.15)
-                : AppThemeData.secondary200.withOpacity(0.15),
+                ? AppThemeData.primary200.withValues(alpha:0.15)
+                : AppThemeData.secondary200.withValues(alpha:0.15),
             shape: BoxShape.circle,
           ),
           child: CustomText(

@@ -58,8 +58,8 @@ class CustomButton extends StatelessWidget {
         child: InkWell(
           onTap: (isLoading ?? false) ? null : ontap,
           borderRadius: BorderRadius.circular(borderRadius ?? 14),
-          splashColor: AppThemeData.primary200.withOpacity(0.1),
-          highlightColor: AppThemeData.primary200.withOpacity(0.05),
+          splashColor: AppThemeData.primary200.withValues(alpha:0.1),
+          highlightColor: AppThemeData.primary200.withValues(alpha:0.05),
           child: Ink(
             padding: padding ??
                 const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -70,7 +70,7 @@ class CustomButton extends StatelessWidget {
                       ? null
                       : [
                           BoxShadow(
-                            color: AppThemeData.primary200.withOpacity(0.2),
+                            color: AppThemeData.primary200.withValues(alpha:0.2),
                             blurRadius: 8,
                             offset: const Offset(0, 4),
                           ),

@@ -65,7 +65,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               decoration: BoxDecoration(
                 color: isDarkMode
-                    ? AppThemeData.grey300Dark.withOpacity(0.3)
+                    ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                     : AppThemeData.grey100,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(

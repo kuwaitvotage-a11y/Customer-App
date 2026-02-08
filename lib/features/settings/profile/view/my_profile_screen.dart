@@ -402,7 +402,7 @@ class MyProfileScreen extends StatelessWidget {
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: (textIconColor ?? AppThemeData.error200).withOpacity(0.1),
+          color: (textIconColor ?? AppThemeData.error200).withValues(alpha:0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
@@ -502,7 +502,7 @@ class MyProfileScreen extends StatelessWidget {
                       text: "Please Select".tr,
                       size: 16,
                       weight: FontWeight.w600,
-                      color: const Color(0XFF333333).withOpacity(0.8),
+                      color: const Color(0XFF333333).withValues(alpha:0.8),
                     ),
                   ),
                   Row(

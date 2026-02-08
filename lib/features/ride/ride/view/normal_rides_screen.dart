@@ -128,7 +128,7 @@ class _NewRideScreenState extends State<NewRideScreen>
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             labelStyle: const TextStyle(
-                fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'pop'),
+                fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Cairo'),
             tabs: [
               Tab(
                 text: 'Normal'.tr,
@@ -200,7 +200,7 @@ class _NewRideScreenState extends State<NewRideScreen>
               hintStyle: TextStyle(
                 color: isDark ? AppThemeData.grey400Dark : AppThemeData.grey400,
                 fontSize: 14,
-                fontFamily: 'pop',
+                fontFamily: 'Cairo',
               ),
               prefixIcon: Icon(
                 Iconsax.search_normal,
@@ -229,7 +229,7 @@ class _NewRideScreenState extends State<NewRideScreen>
             style: TextStyle(
               color: isDark ? AppThemeData.grey900Dark : AppThemeData.grey900,
               fontSize: 14,
-              fontFamily: 'pop',
+              fontFamily: 'Cairo',
             ),
           ),
         ),
@@ -501,7 +501,7 @@ class _NewRideScreenState extends State<NewRideScreen>
               hintStyle: TextStyle(
                 color: isDark ? AppThemeData.grey400Dark : AppThemeData.grey400,
                 fontSize: 14,
-                fontFamily: 'pop',
+                fontFamily: 'Cairo',
               ),
               prefixIcon: Icon(
                 Iconsax.search_normal,
@@ -530,7 +530,7 @@ class _NewRideScreenState extends State<NewRideScreen>
             style: TextStyle(
               color: isDark ? AppThemeData.grey900Dark : AppThemeData.grey900,
               fontSize: 14,
-              fontFamily: 'pop',
+              fontFamily: 'Cairo',
             ),
           ),
         ),
@@ -708,14 +708,14 @@ class _NewRideScreenState extends State<NewRideScreen>
                         color: isSelected
                             ? AppThemeData.primary200
                             : isDarkMode
-                                ? AppThemeData.grey800Dark.withOpacity(0.5)
+                                ? AppThemeData.grey800Dark.withValues(alpha:0.5)
                                 : Colors.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isSelected
                               ? AppThemeData.primary200
                               : isDarkMode
-                                  ? AppThemeData.grey300Dark.withOpacity(0.3)
+                                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                                   : AppThemeData.grey200,
                           width: isSelected ? 1.5 : 1,
                         ),
@@ -723,7 +723,7 @@ class _NewRideScreenState extends State<NewRideScreen>
                             ? [
                                 BoxShadow(
                                   color:
-                                      AppThemeData.primary200.withOpacity(0.2),
+                                      AppThemeData.primary200.withValues(alpha:0.2),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -751,10 +751,10 @@ class _NewRideScreenState extends State<NewRideScreen>
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                 color: isSelected
-                                    ? Colors.white.withOpacity(0.25)
+                                    ? Colors.white.withValues(alpha:0.25)
                                     : isDarkMode
                                         ? AppThemeData.grey300Dark
-                                            .withOpacity(0.5)
+                                            .withValues(alpha:0.5)
                                         : AppThemeData.grey100,
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -814,14 +814,14 @@ class _NewRideScreenState extends State<NewRideScreen>
                         color: isSelected
                             ? AppThemeData.primary200
                             : isDarkMode
-                                ? AppThemeData.grey800Dark.withOpacity(0.5)
+                                ? AppThemeData.grey800Dark.withValues(alpha:0.5)
                                 : Colors.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isSelected
                               ? AppThemeData.primary200
                               : isDarkMode
-                                  ? AppThemeData.grey300Dark.withOpacity(0.3)
+                                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                                   : AppThemeData.grey200,
                           width: isSelected ? 1.5 : 1,
                         ),
@@ -829,7 +829,7 @@ class _NewRideScreenState extends State<NewRideScreen>
                             ? [
                                 BoxShadow(
                                   color:
-                                      AppThemeData.primary200.withOpacity(0.2),
+                                      AppThemeData.primary200.withValues(alpha:0.2),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -857,10 +857,10 @@ class _NewRideScreenState extends State<NewRideScreen>
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                 color: isSelected
-                                    ? Colors.white.withOpacity(0.25)
+                                    ? Colors.white.withValues(alpha:0.25)
                                     : isDarkMode
                                         ? AppThemeData.grey300Dark
-                                            .withOpacity(0.5)
+                                            .withValues(alpha:0.5)
                                         : AppThemeData.grey100,
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -912,7 +912,7 @@ class _NewRideScreenState extends State<NewRideScreen>
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
               decoration: BoxDecoration(
                 color: isDark
-                    ? AppThemeData.grey800Dark.withOpacity(0.3)
+                    ? AppThemeData.grey800Dark.withValues(alpha:0.3)
                     : AppThemeData.grey100,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
@@ -1030,8 +1030,8 @@ class _NewRideScreenState extends State<NewRideScreen>
               height: 1,
               thickness: 1,
               color: isDark
-                  ? AppThemeData.grey200Dark.withOpacity(0.3)
-                  : AppThemeData.grey200.withOpacity(0.5),
+                  ? AppThemeData.grey200Dark.withValues(alpha:0.3)
+                  : AppThemeData.grey200.withValues(alpha:0.5),
             ),
 
             const SizedBox(height: 16),
@@ -1103,10 +1103,10 @@ class _NewRideScreenState extends State<NewRideScreen>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
-                    color: AppThemeData.primary200.withOpacity(0.08),
+                    color: AppThemeData.primary200.withValues(alpha:0.08),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: AppThemeData.primary200.withOpacity(0.2),
+                      color: AppThemeData.primary200.withValues(alpha:0.2),
                       width: 1,
                     ),
                   ),
@@ -1145,12 +1145,12 @@ class _NewRideScreenState extends State<NewRideScreen>
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: isDark
-                    ? AppThemeData.grey800Dark.withOpacity(0.3)
+                    ? AppThemeData.grey800Dark.withValues(alpha:0.3)
                     : AppThemeData.grey100,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: isDark
-                      ? AppThemeData.grey300Dark.withOpacity(0.2)
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.2)
                       : AppThemeData.grey200,
                   width: 1,
                 ),
@@ -1172,8 +1172,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                     height: 40,
                     margin: const EdgeInsets.symmetric(horizontal: 12),
                     color: isDark
-                        ? AppThemeData.grey300Dark.withOpacity(0.2)
-                        : AppThemeData.grey300.withOpacity(0.3),
+                        ? AppThemeData.grey300Dark.withValues(alpha:0.2)
+                        : AppThemeData.grey300.withValues(alpha:0.3),
                   ),
                   // Duration (if available)
                   if (data.duree != null &&
@@ -1197,8 +1197,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                       height: 40,
                       margin: const EdgeInsets.symmetric(horizontal: 12),
                       color: isDark
-                          ? AppThemeData.grey300Dark.withOpacity(0.2)
-                          : AppThemeData.grey300.withOpacity(0.3),
+                          ? AppThemeData.grey300Dark.withValues(alpha:0.2)
+                          : AppThemeData.grey300.withValues(alpha:0.3),
                     ),
                   ],
                   // Price
@@ -1323,7 +1323,7 @@ class _NewRideScreenState extends State<NewRideScreen>
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: bgColor.withOpacity(0.3),
+            color: bgColor.withValues(alpha:0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -1405,8 +1405,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                 margin: const EdgeInsets.only(bottom: 4),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                   borderRadius: BorderRadius.circular(1),
                 ),
               ),
@@ -1414,10 +1414,10 @@ class _NewRideScreenState extends State<NewRideScreen>
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.1),
+                color: iconColor.withValues(alpha:0.1),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: iconColor.withOpacity(0.3),
+                  color: iconColor.withValues(alpha:0.3),
                   width: 1.5,
                 ),
               ),
@@ -1434,8 +1434,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                 margin: const EdgeInsets.only(top: 4),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                   borderRadius: BorderRadius.circular(1),
                 ),
               ),
@@ -1535,14 +1535,14 @@ class _NewRideScreenState extends State<NewRideScreen>
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: AppThemeData.primary200.withOpacity(0.15),
+            color: AppThemeData.primary200.withValues(alpha:0.15),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
             border: Border(
               bottom: BorderSide(
-                color: AppThemeData.primary200.withOpacity(0.2),
+                color: AppThemeData.primary200.withValues(alpha:0.2),
                 width: 1,
               ),
             ),

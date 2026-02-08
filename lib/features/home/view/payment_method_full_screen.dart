@@ -188,7 +188,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppThemeData.success300.withOpacity(0.1),
+                  color: AppThemeData.success300.withValues(alpha:0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -238,7 +238,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppThemeData.error200.withOpacity(0.1),
+                  color: AppThemeData.error200.withValues(alpha:0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -285,8 +285,8 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
             height: 1,
             thickness: 1,
             color: isDarkMode
-                ? AppThemeData.grey300Dark.withOpacity(0.3)
-                : AppThemeData.grey300.withOpacity(0.3),
+                ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                : AppThemeData.grey300.withValues(alpha:0.3),
           ),
           const SizedBox(height: 16),
           // Distance, Duration, Vehicle Type
@@ -433,7 +433,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: AppThemeData.success300.withOpacity(0.2),
+                        color: AppThemeData.success300.withValues(alpha:0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -548,7 +548,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? AppThemeData.success300.withOpacity(0.15)
+                            ? AppThemeData.success300.withValues(alpha:0.15)
                             : (isDarkMode
                                 ? AppThemeData.grey800
                                 : Colors.white),
@@ -557,7 +557,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                           color: isSelected
                               ? AppThemeData.success300
                               : (isDarkMode
-                                  ? AppThemeData.grey300Dark.withOpacity(0.3)
+                                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                                   : AppThemeData.grey300),
                           width: isSelected ? 2 : 1,
                         ),
@@ -643,11 +643,11 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: AppThemeData.success300.withOpacity(0.1),
+                                color: AppThemeData.success300.withValues(alpha:0.1),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   color:
-                                      AppThemeData.success300.withOpacity(0.3),
+                                      AppThemeData.success300.withValues(alpha:0.3),
                                   width: 1,
                                 ),
                               ),
@@ -831,10 +831,10 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                       vertical: 14,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.1),
+                      color: Colors.red.withValues(alpha:0.1),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: Colors.red.withOpacity(0.3),
+                        color: Colors.red.withValues(alpha:0.3),
                         width: 1,
                       ),
                     ),
@@ -855,7 +855,7 @@ class _PaymentMethodFullScreenState extends State<PaymentMethodFullScreen> {
                 vertical: 8,
               ),
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
+                color: Colors.green.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(

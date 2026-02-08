@@ -304,7 +304,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha:0.2),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: CustomText(
@@ -320,7 +320,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha:0.2),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: CustomText(
@@ -355,7 +355,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppThemeData.primary200.withOpacity(0.1),
+                  color: AppThemeData.primary200.withValues(alpha:0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: CustomText(
@@ -379,7 +379,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                   Container(
                       width: 2,
                       height: 30,
-                      color: Colors.grey.withOpacity(0.3)),
+                      color: Colors.grey.withValues(alpha:0.3)),
                   const Icon(Icons.location_on, color: Colors.red, size: 24),
                 ],
               ),
@@ -499,9 +499,9 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
             spacing: 8,
             children: subscription!.workingDaysNames
                 .map((day) => Chip(
-                      label: Text(day, style: const TextStyle(fontSize: 12)),
-                      backgroundColor: AppThemeData.primary200.withOpacity(0.1),
-                      labelStyle: TextStyle(color: AppThemeData.primary200),
+                      label: Text(day, style: const TextStyle(fontSize: 12, fontFamily: 'Cairo')),
+                      backgroundColor: AppThemeData.primary200.withValues(alpha:0.1),
+                      labelStyle: TextStyle(color: AppThemeData.primary200, fontFamily: 'Cairo'),
                     ))
                 .toList(),
           ),
@@ -594,7 +594,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundColor: AppThemeData.primary200.withOpacity(0.1),
+            backgroundColor: AppThemeData.primary200.withValues(alpha:0.1),
             child: subscription!.driver!.photo != null &&
                     subscription!.driver!.photo!.isNotEmpty
                 ? ClipOval(
@@ -673,7 +673,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: AppThemeData.primary200.withOpacity(0.1),
+                          color: AppThemeData.primary200.withValues(alpha:0.1),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: CustomText(
@@ -721,7 +721,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: _getStatusColor(ride.status).withOpacity(0.1),
+                          color: _getStatusColor(ride.status).withValues(alpha:0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: CustomText(
@@ -815,7 +815,7 @@ class _SubscriptionDetailScreenState extends State<SubscriptionDetailScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.error_outline,
-              size: 64, color: Colors.red.withOpacity(0.5)),
+              size: 64, color: Colors.red.withValues(alpha:0.5)),
           const SizedBox(height: 16),
           CustomText(
             text: 'Failed to load subscription'.tr,

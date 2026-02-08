@@ -45,10 +45,10 @@ class CreateSubscriptionScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppThemeData.primary200.withOpacity(0.1),
+                color: AppThemeData.primary200.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(12),
                 border:
-                    Border.all(color: AppThemeData.primary200.withOpacity(0.3)),
+                    Border.all(color: AppThemeData.primary200.withValues(alpha:0.3)),
               ),
               child: Row(
                 children: [
@@ -297,7 +297,7 @@ class CreateSubscriptionScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppThemeData.primary200.withOpacity(0.1)
+              ? AppThemeData.primary200.withValues(alpha:0.1)
               : (themeChange.getThem() ? AppThemeData.grey800 : Colors.white),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
@@ -830,7 +830,7 @@ class CreateSubscriptionScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha:0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

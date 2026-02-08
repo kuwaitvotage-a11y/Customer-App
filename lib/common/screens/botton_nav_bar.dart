@@ -45,8 +45,8 @@ class BottomNavBar extends StatelessWidget {
             border: Border(
               top: BorderSide(
                 color: isDarkMode
-                    ? AppThemeData.grey800Dark.withOpacity(0.3)
-                    : AppThemeData.grey200.withOpacity(0.5),
+                    ? AppThemeData.grey800Dark.withValues(alpha:0.3)
+                    : AppThemeData.grey200.withValues(alpha:0.5),
                 width: 0.5,
               ),
             ),

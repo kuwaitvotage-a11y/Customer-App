@@ -121,7 +121,7 @@ class _NewRideScreenState extends State<NewRideScreen>
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             labelStyle:
-                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Cairo'),
             tabs: [
               Tab(text: 'Normal'.tr),
               Tab(text: 'Scheduled'.tr),
@@ -290,7 +290,7 @@ class _NewRideScreenState extends State<NewRideScreen>
                             horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? Colors.white.withOpacity(0.2)
+                              ? Colors.white.withValues(alpha:0.2)
                               : isDarkMode
                                   ? AppThemeData.grey300Dark
                                   : AppThemeData.grey200,
@@ -374,7 +374,7 @@ class _NewRideScreenState extends State<NewRideScreen>
                             horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? Colors.white.withOpacity(0.2)
+                              ? Colors.white.withValues(alpha:0.2)
                               : isDarkMode
                                   ? AppThemeData.grey300Dark
                                   : AppThemeData.grey200,
@@ -460,8 +460,8 @@ class _NewRideScreenState extends State<NewRideScreen>
               height: 1,
               thickness: 1,
               color: isDark
-                  ? AppThemeData.grey200Dark.withOpacity(0.3)
-                  : AppThemeData.grey200.withOpacity(0.5),
+                  ? AppThemeData.grey200Dark.withValues(alpha:0.3)
+                  : AppThemeData.grey200.withValues(alpha:0.5),
             ),
 
             const SizedBox(height: 16),
@@ -533,10 +533,10 @@ class _NewRideScreenState extends State<NewRideScreen>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
-                    color: AppThemeData.primary200.withOpacity(0.08),
+                    color: AppThemeData.primary200.withValues(alpha:0.08),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: AppThemeData.primary200.withOpacity(0.2),
+                      color: AppThemeData.primary200.withValues(alpha:0.2),
                       width: 1,
                     ),
                   ),
@@ -589,8 +589,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                     height: 32,
                     margin: const EdgeInsets.symmetric(horizontal: 12),
                     color: isDark
-                        ? AppThemeData.grey300Dark.withOpacity(0.2)
-                        : AppThemeData.grey300.withOpacity(0.3),
+                        ? AppThemeData.grey300Dark.withValues(alpha:0.2)
+                        : AppThemeData.grey300.withValues(alpha:0.3),
                   ),
                   // Price
                   Expanded(
@@ -727,7 +727,7 @@ class _NewRideScreenState extends State<NewRideScreen>
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: bgColor.withOpacity(0.3),
+            color: bgColor.withValues(alpha:0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -813,8 +813,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                 margin: const EdgeInsets.only(bottom: 4),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                   borderRadius: BorderRadius.circular(1),
                 ),
               ),
@@ -822,10 +822,10 @@ class _NewRideScreenState extends State<NewRideScreen>
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.1),
+                color: iconColor.withValues(alpha:0.1),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: iconColor.withOpacity(0.3),
+                  color: iconColor.withValues(alpha:0.3),
                   width: 1.5,
                 ),
               ),
@@ -842,8 +842,8 @@ class _NewRideScreenState extends State<NewRideScreen>
                 margin: const EdgeInsets.only(top: 4),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? AppThemeData.grey300Dark.withOpacity(0.3)
-                      : AppThemeData.grey300.withOpacity(0.3),
+                      ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                      : AppThemeData.grey300.withValues(alpha:0.3),
                   borderRadius: BorderRadius.circular(1),
                 ),
               ),
@@ -943,14 +943,14 @@ class _NewRideScreenState extends State<NewRideScreen>
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: AppThemeData.primary200.withOpacity(0.15),
+            color: AppThemeData.primary200.withValues(alpha:0.15),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
             border: Border(
               bottom: BorderSide(
-                color: AppThemeData.primary200.withOpacity(0.2),
+                color: AppThemeData.primary200.withValues(alpha:0.2),
                 width: 1,
               ),
             ),

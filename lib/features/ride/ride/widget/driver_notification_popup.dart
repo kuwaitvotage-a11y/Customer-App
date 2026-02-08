@@ -46,8 +46,8 @@ class DriverNotificationPopup extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: notificationType == 'arrived'
-                    ? AppThemeData.success300.withOpacity(0.1)
-                    : AppThemeData.secondary200.withOpacity(0.1),
+                    ? AppThemeData.success300.withValues(alpha:0.1)
+                    : AppThemeData.secondary200.withValues(alpha:0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -102,7 +102,7 @@ class DriverNotificationPopup extends StatelessWidget {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppThemeData.secondary200.withOpacity(0.1),
+                    color: AppThemeData.secondary200.withValues(alpha:0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(

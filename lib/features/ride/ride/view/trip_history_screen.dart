@@ -623,7 +623,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                       shape: BoxShape.circle,
                                                       color: AppThemeData
                                                           .primary200
-                                                          .withOpacity(0.2),
+                                                          .withValues(alpha:0.2),
                                                     ),
                                                     child: Icon(
                                                       Iconsax.routing_2,
@@ -660,7 +660,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                     shape: BoxShape.circle,
                                                     color: AppThemeData
                                                         .secondary200
-                                                        .withOpacity(0.2),
+                                                        .withValues(alpha:0.2),
                                                   ),
                                                   child: Icon(
                                                     Iconsax.share,
@@ -686,7 +686,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                     shape: BoxShape.circle,
                                                     color: AppThemeData
                                                         .warning200
-                                                        .withOpacity(0.2),
+                                                        .withValues(alpha:0.2),
                                                   ),
                                                   child: Icon(
                                                     Iconsax.call,

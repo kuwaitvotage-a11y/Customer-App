@@ -157,17 +157,17 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
               }
             },
             borderRadius: BorderRadius.circular(16),
-            splashColor: AppThemeData.primary200.withOpacity(0.1),
-            highlightColor: AppThemeData.primary200.withOpacity(0.05),
+            splashColor: AppThemeData.primary200.withValues(alpha:0.1),
+            highlightColor: AppThemeData.primary200.withValues(alpha:0.05),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: isSelected
-                    ? AppThemeData.primary200.withOpacity(0.1)
+                    ? AppThemeData.primary200.withValues(alpha:0.1)
                     : Colors.transparent,
                 border: Border.all(
                   color: isSelected
-                      ? AppThemeData.primary200.withOpacity(0.3)
+                      ? AppThemeData.primary200.withValues(alpha:0.3)
                       : Colors.transparent,
                   width: 1,
                 ),
@@ -179,12 +179,12 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: isLogout
-                          ? AppThemeData.error200.withOpacity(0.1)
+                          ? AppThemeData.error200.withValues(alpha:0.1)
                           : isSelected
-                              ? AppThemeData.primary200.withOpacity(0.15)
+                              ? AppThemeData.primary200.withValues(alpha:0.15)
                               : (isDarkMode
-                                  ? AppThemeData.grey800Dark.withOpacity(0.5)
-                                  : AppThemeData.grey100.withOpacity(0.8)),
+                                  ? AppThemeData.grey800Dark.withValues(alpha:0.5)
+                                  : AppThemeData.grey100.withValues(alpha:0.8)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
@@ -263,7 +263,7 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
               end: Alignment.bottomRight,
               colors: [
                 AppThemeData.primary200,
-                AppThemeData.primary200.withOpacity(0.8),
+                AppThemeData.primary200.withValues(alpha:0.8),
               ],
             ),
           ),
@@ -281,7 +281,7 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha:0.1),
                           blurRadius: 20,
                           spreadRadius: 2,
                           offset: const Offset(0, 4),
@@ -313,13 +313,13 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                       Icon(
                         Iconsax.sms,
                         size: 14,
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha:0.9),
                       ),
                       const SizedBox(width: 6),
                       Flexible(
                         child: CustomText(
                           text: controller.userModel?.data?.email ?? '',
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha:0.9),
                           size: 13,
                           align: TextAlign.center,
                           overflow: TextOverflow.ellipsis,

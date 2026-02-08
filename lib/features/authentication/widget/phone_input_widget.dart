@@ -100,7 +100,7 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
             ),
             borderRadius: const BorderRadius.all(Radius.circular(0)),
             color: isDarkMode
-                ? AppThemeData.grey300Dark.withOpacity(0.3)
+                ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                 : Colors.white,
           ),
           padding: const EdgeInsets.only(left: 10),
@@ -179,17 +179,17 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                 color: isDarkMode
                     ? AppThemeData.grey400Dark
                     : AppThemeData.grey400,
-                fontFamily: 'pop',
+                fontFamily: 'Cairo',
               ),
               border: InputBorder.none,
-              errorStyle: const TextStyle(height: 0, fontSize: 0),
+              errorStyle: const TextStyle(height: 0, fontSize: 0, fontFamily: 'Cairo'),
             ),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color:
                   isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
-              fontFamily: 'pop',
+              fontFamily: 'Cairo',
             ),
             cursorColor: AppThemeData.primary200,
             onChanged: (value) {
@@ -226,7 +226,7 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                             color: _isValid
                                 ? Colors.green.shade600
                                 : Colors.red.shade600,
-                            fontFamily: 'pop',
+                            fontFamily: 'Cairo',
                           ),
                         ),
                       ),
@@ -238,7 +238,7 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                           color: isDarkMode
                               ? AppThemeData.grey400Dark
                               : AppThemeData.grey400,
-                          fontFamily: 'pop',
+                          fontFamily: 'Cairo',
                         ),
                       ),
                     ],
@@ -253,7 +253,7 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                       color: isDarkMode
                           ? AppThemeData.grey400Dark
                           : AppThemeData.grey400,
-                      fontFamily: 'pop',
+                      fontFamily: 'Cairo',
                     ),
                   ),
                 ),

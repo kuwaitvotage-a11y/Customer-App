@@ -396,7 +396,7 @@ class ConversationScreen extends StatelessWidget {
     final action = CupertinoActionSheet(
       message: Text(
         'Send media'.tr,
-        style: const TextStyle(fontSize: 15.0),
+        style: const TextStyle(fontSize: 15.0, fontFamily: 'Cairo'),
       ),
       actions: <Widget>[
         CupertinoActionSheetAction(

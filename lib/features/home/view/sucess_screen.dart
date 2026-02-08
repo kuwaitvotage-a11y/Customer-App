@@ -63,7 +63,7 @@ class RideBookingSuccessScreen extends StatelessWidget {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  color: AppThemeData.success50.withOpacity(0.2),
+                  color: AppThemeData.success50.withValues(alpha:0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -121,7 +121,7 @@ class RideBookingSuccessScreen extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha:0.05),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),

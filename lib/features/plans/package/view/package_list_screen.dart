@@ -45,7 +45,7 @@ class PackageListScreen extends StatelessWidget {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             labelStyle:
-                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14, fontFamily: 'Cairo'),
             tabs: [
               Tab(text: 'Buy Packages'.tr),
               Tab(text: 'My Packages'.tr),
@@ -257,11 +257,11 @@ class PackageListScreen extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      color: AppThemeData.primary200.withOpacity(0.1),
+      color: AppThemeData.primary200.withValues(alpha:0.1),
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: AppThemeData.primary200.withOpacity(0.3)),
+        side: BorderSide(color: AppThemeData.primary200.withValues(alpha:0.3)),
       ),
       child: InkWell(
         onTap: () => DefaultTabController.of(context).animateTo(0),
@@ -273,7 +273,7 @@ class PackageListScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppThemeData.primary200.withOpacity(0.2),
+                  color: AppThemeData.primary200.withValues(alpha:0.2),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -360,7 +360,7 @@ class PackageListScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.1),
+                    color: statusColor.withValues(alpha:0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: CustomText(
@@ -380,7 +380,7 @@ class PackageListScreen extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: isDark
-                    ? AppThemeData.grey300Dark.withOpacity(0.3)
+                    ? AppThemeData.grey300Dark.withValues(alpha:0.3)
                     : AppThemeData.grey100,
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -602,9 +602,9 @@ class PackageListScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: isWarning
-            ? Colors.orange.withOpacity(0.1)
+            ? Colors.orange.withValues(alpha:0.1)
             : isSuccess
-                ? AppThemeData.success300.withOpacity(0.1)
+                ? AppThemeData.success300.withValues(alpha:0.1)
                 : (isDark ? AppThemeData.grey300Dark : AppThemeData.grey100),
         borderRadius: BorderRadius.circular(8),
       ),

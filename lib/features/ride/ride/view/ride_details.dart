@@ -230,7 +230,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppThemeData.primary200.withOpacity(0.1),
+                color: AppThemeData.primary200.withValues(alpha:0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
@@ -378,9 +378,9 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                       margin: const EdgeInsets.only(left: 19),
                                       color: isDarkMode
                                           ? AppThemeData.grey300Dark
-                                              .withOpacity(0.3)
+                                              .withValues(alpha:0.3)
                                           : AppThemeData.grey300
-                                              .withOpacity(0.3),
+                                              .withValues(alpha:0.3),
                                     ),
                                   ),
                                   // Dropoff Location
@@ -734,7 +734,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                       shape: BoxShape.circle,
                                                       color: AppThemeData
                                                           .primary200
-                                                          .withOpacity(0.2),
+                                                          .withValues(alpha:0.2),
                                                     ),
                                                     child: Icon(
                                                       Iconsax.routing_2,
@@ -771,7 +771,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                     shape: BoxShape.circle,
                                                     color: AppThemeData
                                                         .secondary200
-                                                        .withOpacity(0.2),
+                                                        .withValues(alpha:0.2),
                                                   ),
                                                   child: Icon(
                                                     Iconsax.share,
@@ -797,7 +797,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
                                                     shape: BoxShape.circle,
                                                     color: AppThemeData
                                                         .warning200
-                                                        .withOpacity(0.2),
+                                                        .withValues(alpha:0.2),
                                                   ),
                                                   child: Icon(
                                                     Iconsax.call,
@@ -1496,33 +1496,33 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
 
     switch (status.toLowerCase()) {
       case 'new':
-        bgColor = AppThemeData.primary200.withOpacity(0.15);
+        bgColor = AppThemeData.primary200.withValues(alpha:0.15);
         textColor = AppThemeData.primary200;
         icon = Iconsax.clock;
         break;
       case 'confirmed':
-        bgColor = AppThemeData.success300.withOpacity(0.15);
+        bgColor = AppThemeData.success300.withValues(alpha:0.15);
         textColor = AppThemeData.success300;
         icon = Iconsax.tick_circle;
         break;
       case 'on ride':
-        bgColor = AppThemeData.warning200.withOpacity(0.15);
+        bgColor = AppThemeData.warning200.withValues(alpha:0.15);
         textColor = AppThemeData.warning200;
         icon = Iconsax.car;
         break;
       case 'completed':
-        bgColor = AppThemeData.success300.withOpacity(0.15);
+        bgColor = AppThemeData.success300.withValues(alpha:0.15);
         textColor = AppThemeData.success300;
         icon = Iconsax.tick_square;
         break;
       case 'rejected':
       case 'cancelled':
-        bgColor = AppThemeData.error200.withOpacity(0.15);
+        bgColor = AppThemeData.error200.withValues(alpha:0.15);
         textColor = AppThemeData.error200;
         icon = Iconsax.close_circle;
         break;
       default:
-        bgColor = AppThemeData.grey500.withOpacity(0.15);
+        bgColor = AppThemeData.grey500.withValues(alpha:0.15);
         textColor = AppThemeData.grey500;
         icon = Iconsax.document;
     }
@@ -1533,7 +1533,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
         color: bgColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: textColor.withOpacity(0.3),
+          color: textColor.withValues(alpha:0.3),
           width: 1,
         ),
       ),
@@ -1554,7 +1554,7 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: textColor.withOpacity(0.2),
+                color: textColor.withValues(alpha:0.2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: CustomText(
@@ -1593,8 +1593,8 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
               height: 40,
               margin: const EdgeInsets.symmetric(horizontal: 12),
               color: isDarkMode
-                  ? AppThemeData.grey300Dark.withOpacity(0.3)
-                  : AppThemeData.grey300.withOpacity(0.3),
+                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                  : AppThemeData.grey300.withValues(alpha:0.3),
             ),
           // Duration (if available)
           if (data.duree != null &&
@@ -1616,8 +1616,8 @@ class _TripHistoryScreenState extends State<TripHistoryScreen> {
               height: 40,
               margin: const EdgeInsets.symmetric(horizontal: 12),
               color: isDarkMode
-                  ? AppThemeData.grey300Dark.withOpacity(0.3)
-                  : AppThemeData.grey300.withOpacity(0.3),
+                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                  : AppThemeData.grey300.withValues(alpha:0.3),
             ),
           ],
           // Price

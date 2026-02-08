@@ -35,7 +35,7 @@ class SocialLoginButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor ??
             (isDarkMode
-                ? AppThemeData.grey300Dark.withOpacity(0.5)
+                ? AppThemeData.grey300Dark.withValues(alpha:0.5)
                 : Colors.white),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(

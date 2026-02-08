@@ -41,7 +41,7 @@ class RadioButtonCustom extends StatelessWidget {
           decoration: BoxDecoration(
             color: isSelected
                 ? (isDarkMode
-                    ? AppThemeData.primary200.withOpacity(0.15)
+                    ? AppThemeData.primary200.withValues(alpha:0.15)
                     : AppThemeData.primary50)
                 : (isDarkMode ? AppThemeData.surface50Dark : Colors.white),
             borderRadius: BorderRadius.circular(12),
@@ -56,14 +56,14 @@ class RadioButtonCustom extends StatelessWidget {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: AppThemeData.primary200.withOpacity(0.1),
+                      color: AppThemeData.primary200.withValues(alpha:0.1),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
                   ]
                 : [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.03),
+                      color: Colors.black.withValues(alpha:0.03),
                       blurRadius: 4,
                       offset: const Offset(0, 1),
                     ),
@@ -77,9 +77,9 @@ class RadioButtonCustom extends StatelessWidget {
                 height: 56,
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? AppThemeData.primary200.withOpacity(0.1)
+                      ? AppThemeData.primary200.withValues(alpha:0.1)
                       : (isDarkMode
-                          ? AppThemeData.grey200Dark.withOpacity(0.3)
+                          ? AppThemeData.grey200Dark.withValues(alpha:0.3)
                           : AppThemeData.grey100),
                   borderRadius: BorderRadius.circular(12),
                 ),

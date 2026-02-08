@@ -29,11 +29,11 @@ class AuthBackgroundWidget extends StatelessWidget {
           colors: isDarkMode
               ? [
                   AppThemeData.primary200,
-                  AppThemeData.primary200.withOpacity(0.8),
+                  AppThemeData.primary200.withValues(alpha:0.8),
                 ]
               : [
                   AppThemeData.primary200,
-                  AppThemeData.primary200.withOpacity(0.9),
+                  AppThemeData.primary200.withValues(alpha:0.9),
                 ],
         ),
       ),
@@ -49,7 +49,7 @@ class AuthBackgroundWidget extends StatelessWidget {
                 height: 300,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha:0.05),
                 ),
               ),
             ),
@@ -62,7 +62,7 @@ class AuthBackgroundWidget extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha:0.05),
                 ),
               ),
             ),

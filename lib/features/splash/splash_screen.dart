@@ -411,12 +411,12 @@ class _SplashScreenState extends State<SplashScreen>
             colors: isDarkMode
                 ? [
                     AppThemeData.primary200,
-                    AppThemeData.primary200.withOpacity(0.7),
+                    AppThemeData.primary200.withValues(alpha:0.7),
                     const Color(0xFF001F1F),
                   ]
                 : [
                     AppThemeData.primary200,
-                    AppThemeData.primary200.withOpacity(0.8),
+                    AppThemeData.primary200.withValues(alpha:0.8),
                     const Color(0xFF005555),
                   ],
           ),
@@ -440,7 +440,7 @@ class _SplashScreenState extends State<SplashScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white.withOpacity(
+                          color: Colors.white.withValues(alpha:
                             0.1 - (_waveAnimation.value * 0.1),
                           ),
                           width: 2,
@@ -474,7 +474,7 @@ class _SplashScreenState extends State<SplashScreen>
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.white.withOpacity(0.5),
+                              color: Colors.white.withValues(alpha:0.5),
                               blurRadius: 4,
                               spreadRadius: 1,
                             ),
@@ -510,7 +510,7 @@ class _SplashScreenState extends State<SplashScreen>
                           width: 150,
                           height: 150,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.white.withValues(alpha:0.1),
                             shape: BoxShape.circle,
                           ),
                         );
@@ -531,7 +531,7 @@ class _SplashScreenState extends State<SplashScreen>
                     child: CustomText(
                       text: 'your_journey_our_priority'.tr,
                       size: 16,
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withValues(alpha:0.9),
                       letterSpacing: 1,
                     ),
                   ),
@@ -542,7 +542,7 @@ class _SplashScreenState extends State<SplashScreen>
                   FadeTransition(
                     opacity: _fadeAnimation,
                     child: SpinKitThreeBounce(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withValues(alpha:0.9),
                       size: 30.0,
                     ),
                   ),
@@ -562,13 +562,13 @@ class _SplashScreenState extends State<SplashScreen>
                     CustomText(
                       text: '2.2.0',
                       size: 12,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha:0.7),
                     ),
                     const SizedBox(height: 4),
                     CustomText(
                       text: 'powered_by_mshwar'.tr,
                       size: 11,
-                      color: Colors.white.withOpacity(0.6),
+                      color: Colors.white.withValues(alpha:0.6),
                     ),
                   ],
                 ),

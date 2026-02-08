@@ -116,7 +116,7 @@ class CouponCodeScreen extends StatelessWidget {
                             });
                           },
                           child: Container(
-                            color: Colors.black.withOpacity(0.05),
+                            color: Colors.black.withValues(alpha:0.05),
                             child: DottedBorder(
                               color: Colors.grey,
                               strokeWidth: 1,

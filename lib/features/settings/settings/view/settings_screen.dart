@@ -245,7 +245,7 @@ class SettingsScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'pop',
+                    fontFamily: 'Cairo',
                     color: isDarkMode
                         ? AppThemeData.grey900Dark
                         : AppThemeData.grey900,
@@ -264,7 +264,7 @@ class SettingsScreen extends StatelessWidget {
                           : '',
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: 'pop',
+                    fontFamily: 'Cairo',
                     color: isDarkMode
                         ? AppThemeData.grey400Dark
                         : AppThemeData.grey500,
@@ -303,7 +303,7 @@ class SettingsScreen extends StatelessWidget {
           color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey500,
           fontSize: 12,
           fontWeight: FontWeight.w600,
-          fontFamily: 'pop',
+          fontFamily: 'Cairo',
           letterSpacing: 0.8,
         ),
       ),
@@ -336,7 +336,7 @@ class SettingsScreen extends StatelessWidget {
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: (textColor ?? AppThemeData.primary200).withOpacity(0.1),
+          color: (textColor ?? AppThemeData.primary200).withValues(alpha:0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
@@ -350,7 +350,7 @@ class SettingsScreen extends StatelessWidget {
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w500,
-          fontFamily: 'pop',
+          fontFamily: 'Cairo',
           color: textColor ??
               (isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900),
         ),
@@ -370,7 +370,7 @@ class SettingsScreen extends StatelessWidget {
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: AppThemeData.primary200.withOpacity(0.1),
+          color: AppThemeData.primary200.withValues(alpha:0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
@@ -384,7 +384,7 @@ class SettingsScreen extends StatelessWidget {
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w500,
-          fontFamily: 'pop',
+          fontFamily: 'Cairo',
           color: isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
         ),
       ),

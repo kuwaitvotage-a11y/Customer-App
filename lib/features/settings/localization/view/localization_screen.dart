@@ -194,7 +194,7 @@ class LocalizationScreens extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: isSelected
-                  ? AppThemeData.primary200.withOpacity(0.1)
+                  ? AppThemeData.primary200.withValues(alpha:0.1)
                   : isDarkMode
                       ? AppThemeData.grey800Dark
                       : Colors.white,
@@ -203,14 +203,14 @@ class LocalizationScreens extends StatelessWidget {
                 color: isSelected
                     ? AppThemeData.primary200
                     : isDarkMode
-                        ? AppThemeData.grey800Dark.withOpacity(0.3)
+                        ? AppThemeData.grey800Dark.withValues(alpha: 0.3)
                         : AppThemeData.grey200,
                 width: isSelected ? 2 : 1,
               ),
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: AppThemeData.primary200.withOpacity(0.15),
+                        color: AppThemeData.primary200.withValues(alpha:0.15),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -218,8 +218,8 @@ class LocalizationScreens extends StatelessWidget {
                   : [
                       BoxShadow(
                         color: isDarkMode
-                            ? Colors.black.withOpacity(0.2)
-                            : Colors.black.withOpacity(0.05),
+                            ? Colors.black.withValues(alpha:0.2)
+                            : Colors.black.withValues(alpha:0.05),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -241,7 +241,7 @@ class LocalizationScreens extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha:0.05),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),

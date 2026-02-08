@@ -190,7 +190,7 @@ class PaymentSelectionScreen extends StatelessWidget {
                                               boxShadow: <BoxShadow>[
                                                 BoxShadow(
                                                   color: Colors.black
-                                                      .withOpacity(0.2),
+                                                      .withValues(alpha:0.2),
                                                   blurRadius: 2,
                                                   offset: const Offset(2, 2),
                                                 ),
@@ -534,14 +534,14 @@ class PaymentSelectionScreen extends StatelessWidget {
                                                                 ? Colors
                                                                     .transparent
                                                                 : Colors.black
-                                                                    .withOpacity(
+                                                                    .withValues(alpha:
                                                                         0.20),
                                                           ),
                                                           boxShadow: <BoxShadow>[
                                                             BoxShadow(
                                                               color: Colors
                                                                   .black
-                                                                  .withOpacity(
+                                                                  .withValues(alpha:
                                                                       0.3),
                                                               blurRadius: 2,
                                                               offset:
@@ -601,14 +601,14 @@ class PaymentSelectionScreen extends StatelessWidget {
                                                                 ? Colors
                                                                     .transparent
                                                                 : Colors.black
-                                                                    .withOpacity(
+                                                                    .withValues(alpha:
                                                                         0.20),
                                                           ),
                                                           boxShadow: <BoxShadow>[
                                                             BoxShadow(
                                                               color: Colors
                                                                   .black
-                                                                  .withOpacity(
+                                                                  .withValues(alpha:
                                                                       0.3),
                                                               blurRadius: 2,
                                                               offset:
@@ -668,14 +668,14 @@ class PaymentSelectionScreen extends StatelessWidget {
                                                                 ? Colors
                                                                     .transparent
                                                                 : Colors.black
-                                                                    .withOpacity(
+                                                                    .withValues(alpha:
                                                                         0.20),
                                                           ),
                                                           boxShadow: <BoxShadow>[
                                                             BoxShadow(
                                                               color: Colors
                                                                   .black
-                                                                  .withOpacity(
+                                                                  .withValues(alpha:
                                                                       0.3),
                                                               blurRadius: 2,
                                                               offset:
@@ -735,14 +735,14 @@ class PaymentSelectionScreen extends StatelessWidget {
                                                                 ? Colors
                                                                     .transparent
                                                                 : Colors.black
-                                                                    .withOpacity(
+                                                                    .withValues(alpha:
                                                                         0.20),
                                                           ),
                                                           boxShadow: <BoxShadow>[
                                                             BoxShadow(
                                                               color: Colors
                                                                   .black
-                                                                  .withOpacity(
+                                                                  .withValues(alpha:
                                                                       0.3),
                                                               blurRadius: 2,
                                                               offset:
@@ -786,14 +786,14 @@ class PaymentSelectionScreen extends StatelessWidget {
                                                           color: Colors.white,
                                                           border: Border.all(
                                                             color: Colors.black
-                                                                .withOpacity(
+                                                                .withValues(alpha:
                                                                     0.20),
                                                           ),
                                                           boxShadow: <BoxShadow>[
                                                             BoxShadow(
                                                               color: Colors
                                                                   .black
-                                                                  .withOpacity(
+                                                                  .withValues(alpha:
                                                                       0.3),
                                                               blurRadius: 2,
                                                               offset:
@@ -1198,10 +1198,10 @@ Widget _buildTotalAmountCard(PaymentController controller, bool isDarkMode) {
       width: Get.width,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppThemeData.primary200.withOpacity(0.1),
+        color: AppThemeData.primary200.withValues(alpha:0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppThemeData.primary200.withOpacity(0.3),
+          color: AppThemeData.primary200.withValues(alpha:0.3),
           width: 1,
         ),
       ),
@@ -1232,7 +1232,7 @@ Widget _buildTotalAmountCard(PaymentController controller, bool isDarkMode) {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: AppThemeData.primary200.withOpacity(0.2),
+              color: AppThemeData.primary200.withValues(alpha:0.2),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
@@ -1746,7 +1746,7 @@ Widget buildListPromoCode(PaymentController controller, bool isDarkMode) {
                                           },
                                           child: Container(
                                             color:
-                                                Colors.black.withOpacity(0.05),
+                                                Colors.black.withValues(alpha:0.05),
                                             child: DottedBorder(
                                               color: Colors.grey,
                                               strokeWidth: 1,

@@ -82,11 +82,11 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
             colors: isDarkMode
                 ? [
                     AppThemeData.primary200,
-                    AppThemeData.primary200.withOpacity(0.8),
+                    AppThemeData.primary200.withValues(alpha:0.8),
                   ]
                 : [
                     AppThemeData.primary200,
-                    AppThemeData.primary200.withOpacity(0.9),
+                    AppThemeData.primary200.withValues(alpha:0.9),
                   ],
           ),
         ),
@@ -101,7 +101,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                 height: 300,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha:0.05),
                 ),
               ),
             ),
@@ -113,7 +113,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                 height: 200,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha:0.05),
                 ),
               ),
             ),
@@ -167,7 +167,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                       ? 'mobile_login_subtitle'.tr
                                       : 'mobile_signup_subtitle'.tr,
                                   size: 15,
-                                  color: Colors.white.withOpacity(0.9),
+                                  color: Colors.white.withValues(alpha:0.9),
                                   height: 1.5,
                                 ),
                               ],
@@ -194,7 +194,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
+                                  color: Colors.black.withValues(alpha:0.1),
                                   blurRadius: 20,
                                   offset: const Offset(0, -5),
                                 ),
@@ -314,8 +314,8 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                           border: Border(
                             top: BorderSide(
                               color: isDarkMode
-                                  ? AppThemeData.grey300Dark.withOpacity(0.3)
-                                  : AppThemeData.grey300.withOpacity(0.3),
+                                  ? AppThemeData.grey300Dark.withValues(alpha:0.3)
+                                  : AppThemeData.grey300.withValues(alpha:0.3),
                               width: 1,
                             ),
                           ),
@@ -327,7 +327,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                     text: 'first_time_in_mshwar'.tr,
                                     style: TextStyle(
                                       fontSize: 15,
-                                      fontFamily: 'pop',
+                                      fontFamily: 'Cairo',
                                       color: isDarkMode
                                           ? AppThemeData.grey500Dark
                                           : AppThemeData.grey800,
@@ -348,7 +348,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                         text: 'create_an_account'.tr,
                                         style: TextStyle(
                                           fontSize: 15,
-                                          fontFamily: 'pop',
+                                          fontFamily: 'Cairo',
                                           fontWeight: FontWeight.bold,
                                           color: AppThemeData.primary200,
                                         ),
@@ -361,7 +361,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                     text: 'already_book_rides'.tr,
                                     style: TextStyle(
                                       fontSize: 15,
-                                      fontFamily: 'pop',
+                                      fontFamily: 'Cairo',
                                       color: isDarkMode
                                           ? AppThemeData.grey500Dark
                                           : AppThemeData.grey800,
@@ -380,7 +380,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                         text: 'login'.tr,
                                         style: TextStyle(
                                           fontSize: 15,
-                                          fontFamily: 'pop',
+                                          fontFamily: 'Cairo',
                                           fontWeight: FontWeight.bold,
                                           color: AppThemeData.primary200,
                                         ),

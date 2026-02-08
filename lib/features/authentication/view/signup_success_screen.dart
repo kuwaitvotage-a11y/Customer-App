@@ -65,7 +65,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                 end: Alignment.bottomRight,
                 colors: [
                   AppThemeData.primary200,
-                  AppThemeData.primary200.withOpacity(0.8),
+                  AppThemeData.primary200.withValues(alpha:0.8),
                 ],
               ),
             ),
@@ -80,7 +80,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                     height: 300,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(0.05),
+                      color: Colors.white.withValues(alpha:0.05),
                     ),
                   ),
                 ),
@@ -92,7 +92,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                     height: 200,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(0.05),
+                      color: Colors.white.withValues(alpha:0.05),
                     ),
                   ),
                 ),
@@ -104,7 +104,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                     height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(0.03),
+                      color: Colors.white.withValues(alpha:0.03),
                     ),
                   ),
                 ),
@@ -129,7 +129,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
+                                  color: Colors.black.withValues(alpha:0.1),
                                   blurRadius: 30,
                                   spreadRadius: 5,
                                 ),
@@ -163,7 +163,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                               CustomText(
                                 text: 'signup_success_subtitle'.tr,
                                 size: 15,
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha:0.9),
                                 height: 1.6,
                                 align: TextAlign.center,
                               ),
@@ -206,7 +206,7 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
                             child: CustomText(
                               text: 'skip_for_now'.tr,
                               size: 14,
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha:0.8),
                             ),
                           ),
                         ),

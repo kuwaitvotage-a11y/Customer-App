@@ -120,10 +120,10 @@ class PriceSummaryCard extends StatelessWidget {
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppThemeData.success300.withOpacity(0.15),
+                    color: AppThemeData.success300.withValues(alpha:0.15),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: AppThemeData.success300.withOpacity(0.3),
+                      color: AppThemeData.success300.withValues(alpha:0.3),
                       width: 1,
                     ),
                   ),

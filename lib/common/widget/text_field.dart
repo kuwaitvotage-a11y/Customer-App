@@ -336,7 +336,7 @@ class _CustomTextFieldState extends State<CustomTextField>
   // ============================================
   Color _getDefaultFillColor(bool isDarkMode) {
     return isDarkMode
-        ? AppThemeData.grey300Dark.withOpacity(0.5)
+        ? AppThemeData.grey300Dark.withValues(alpha:0.5)
         : Colors.white;
   }
 

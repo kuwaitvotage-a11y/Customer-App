@@ -454,7 +454,7 @@ class _ScheduledRidesScreenState extends State<ScheduledRidesScreen> {
                             horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? Colors.white.withOpacity(0.2)
+                              ? Colors.white.withValues(alpha:0.2)
                               : isDarkMode
                                   ? AppThemeData.grey300Dark
                                   : AppThemeData.grey200,
@@ -534,14 +534,14 @@ class _ScheduledRidesScreenState extends State<ScheduledRidesScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: AppThemeData.primary200.withOpacity(0.15),
+            color: AppThemeData.primary200.withValues(alpha:0.15),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
             border: Border(
               bottom: BorderSide(
-                color: AppThemeData.primary200.withOpacity(0.2),
+                color: AppThemeData.primary200.withValues(alpha:0.2),
                 width: 1,
               ),
             ),

@@ -34,12 +34,12 @@ class OtpInputWidget extends StatelessWidget {
         fontSize: 20,
         color: isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
         fontWeight: FontWeight.w600,
-        fontFamily: 'pop',
+        fontFamily: 'Cairo',
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: isDarkMode
-            ? AppThemeData.grey300Dark.withOpacity(0.5)
+            ? AppThemeData.grey300Dark.withValues(alpha:0.5)
             : Colors.white,
         border: Border.all(
           color: isDarkMode ? AppThemeData.grey300Dark : AppThemeData.grey200,
@@ -47,7 +47,7 @@ class OtpInputWidget extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withValues(alpha:0.03),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -65,7 +65,7 @@ class OtpInputWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: isDarkMode
-              ? AppThemeData.grey300Dark.withOpacity(0.5)
+              ? AppThemeData.grey300Dark.withValues(alpha:0.5)
               : Colors.white,
           border: Border.all(
             color: AppThemeData.primary200,
@@ -73,7 +73,7 @@ class OtpInputWidget extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: AppThemeData.primary200.withOpacity(0.15),
+              color: AppThemeData.primary200.withValues(alpha:0.15),
               blurRadius: 12,
               offset: const Offset(0, 3),
             ),
@@ -84,15 +84,15 @@ class OtpInputWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: isDarkMode
-              ? AppThemeData.grey300Dark.withOpacity(0.5)
+              ? AppThemeData.grey300Dark.withValues(alpha:0.5)
               : Colors.white,
           border: Border.all(
-            color: AppThemeData.primary200.withOpacity(0.5),
+            color: AppThemeData.primary200.withValues(alpha:0.5),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.03),
+              color: Colors.black.withValues(alpha:0.03),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -103,7 +103,7 @@ class OtpInputWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: isDarkMode
-              ? AppThemeData.grey300Dark.withOpacity(0.5)
+              ? AppThemeData.grey300Dark.withValues(alpha:0.5)
               : Colors.white,
           border: Border.all(
             color: Colors.red.shade400,

@@ -50,7 +50,7 @@ class NotificationDialog {
       context: context,
       barrierDismissible: true,
       barrierLabel: 'Notification',
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black.withValues(alpha:0.5),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
         return Container();
@@ -90,7 +90,7 @@ class NotificationDialog {
                               gradient: LinearGradient(
                                 colors: [
                                   AppThemeData.primary200,
-                                  AppThemeData.primary200.withOpacity(0.8),
+                                  AppThemeData.primary200.withValues(alpha:0.8),
                                 ],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
@@ -99,7 +99,7 @@ class NotificationDialog {
                               boxShadow: [
                                 BoxShadow(
                                   color:
-                                      AppThemeData.primary200.withOpacity(0.4),
+                                      AppThemeData.primary200.withValues(alpha:0.4),
                                   blurRadius: 20,
                                   offset: const Offset(0, 8),
                                 ),

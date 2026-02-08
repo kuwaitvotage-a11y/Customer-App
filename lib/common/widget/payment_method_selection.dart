@@ -390,10 +390,10 @@ class _PaymentSelectionSheetState extends State<_PaymentSelectionSheet> {
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppThemeData.primary200.withOpacity(0.1),
+              color: AppThemeData.primary200.withValues(alpha:0.1),
               borderRadius: BorderRadius.circular(16),
               border:
-                  Border.all(color: AppThemeData.primary200.withOpacity(0.3)),
+                  Border.all(color: AppThemeData.primary200.withValues(alpha:0.3)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -509,7 +509,7 @@ class _PaymentSelectionSheetState extends State<_PaymentSelectionSheet> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: method.iconColor.withOpacity(0.1),
+                    color: method.iconColor.withValues(alpha:0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(method.icon, color: method.iconColor, size: 24),
