@@ -30,6 +30,16 @@ class SettingsScreen extends StatelessWidget {
   final dashboardController = Get.put(DashBoardController());
   final InAppReview inAppReview = InAppReview.instance;
 
+  // ===== UI tokens (مودرن وموحّد) =====
+  static const double _pagePadding = 16;
+  static const double _cardRadius = 18;
+  static const double _tileVPadding = 2; // يقلل الإرتفاع
+  static const double _tileHPadding = 6;
+  static const double _iconBox = 38;
+  static const double _iconSize = 20;
+  static const double _titleSize = 15;
+  static const double _sectionSize = 12;
+
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -46,20 +56,21 @@ class SettingsScreen extends StatelessWidget {
       body: GetBuilder<DashBoardController>(
         builder: (controller) {
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(_pagePadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 8),
-                // User Profile Section
-                _buildUserProfile(context, controller, isDarkMode),
-                const SizedBox(height: 16),
+                const SizedBox(height: 4),
 
-                // Ride Management Section
+                // Profile Header (أشيك + أصغر)
+                _buildUserProfile(context, controller, isDarkMode),
+
+                const SizedBox(height: 14),
+
                 _buildSectionHeader('Ride Management'.tr, isDarkMode),
                 const SizedBox(height: 8),
-                LightBorderedCard(
-                  margin: EdgeInsets.zero,
+                _buildCard(
+                  isDarkMode: isDarkMode,
                   child: Column(
                     children: [
                       _buildMenuItem(
@@ -80,13 +91,13 @@ class SettingsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
 
-                // Account & Payments Section
+                const SizedBox(height: 14),
+
                 _buildSectionHeader('Account & Payments'.tr, isDarkMode),
                 const SizedBox(height: 8),
-                LightBorderedCard(
-                  margin: EdgeInsets.zero,
+                _buildCard(
+                  isDarkMode: isDarkMode,
                   child: Column(
                     children: [
                       _buildMenuItem(
@@ -115,13 +126,13 @@ class SettingsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
 
-                // App Settings Section
+                const SizedBox(height: 14),
+
                 _buildSectionHeader('App Settings'.tr, isDarkMode),
                 const SizedBox(height: 8),
-                LightBorderedCard(
-                  margin: EdgeInsets.zero,
+                _buildCard(
+                  isDarkMode: isDarkMode,
                   child: Column(
                     children: [
                       _buildMenuItem(
@@ -137,8 +148,9 @@ class SettingsScreen extends StatelessWidget {
                         title: 'Change Language'.tr,
                         icon: Iconsax.language_square,
                         isDarkMode: isDarkMode,
-                        onTap: () => Get.to(() =>
-                            const LocalizationScreens(intentType: "dashBoard")),
+                        onTap: () => Get.to(
+                          () => const LocalizationScreens(intentType: "dashBoard"),
+                        ),
                       ),
                       _buildDivider(isDarkMode),
                       _buildDarkModeToggle(context, isDarkMode, themeChange),
@@ -161,13 +173,13 @@ class SettingsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
 
-                // Feedback & Support Section
+                const SizedBox(height: 14),
+
                 _buildSectionHeader('Feedback & Support'.tr, isDarkMode),
                 const SizedBox(height: 8),
-                LightBorderedCard(
-                  margin: EdgeInsets.zero,
+                _buildCard(
+                  isDarkMode: isDarkMode,
                   child: Column(
                     children: [
                       _buildMenuItem(
@@ -175,9 +187,7 @@ class SettingsScreen extends StatelessWidget {
                         title: 'Contact Us'.tr,
                         icon: Iconsax.message,
                         isDarkMode: isDarkMode,
-                        onTap: () {
-                          Get.to(() => const ContactUsScreen());
-                        },
+                        onTap: () => Get.to(() => const ContactUsScreen()),
                       ),
                       _buildDivider(isDarkMode),
                       _buildMenuItem(
@@ -201,11 +211,11 @@ class SettingsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
 
-                // Logout
-                LightBorderedCard(
-                  margin: EdgeInsets.zero,
+                const SizedBox(height: 14),
+
+                _buildCard(
+                  isDarkMode: isDarkMode,
                   child: _buildMenuItem(
                     context: context,
                     title: 'Log Out'.tr,
@@ -215,7 +225,8 @@ class SettingsScreen extends StatelessWidget {
                     onTap: () => _showLogoutDialog(context),
                   ),
                 ),
-                const SizedBox(height: 24),
+
+                const SizedBox(height: 22),
               ],
             ),
           );
@@ -224,46 +235,81 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildUserProfile(
-      BuildContext context, DashBoardController controller, bool isDarkMode) {
+  Widget _buildCard({required bool isDarkMode, required Widget child}) {
+    // نفس LightBorderedCard لكن بستايل أحسن وتناسق في الحواف + padding
     return LightBorderedCard(
       margin: EdgeInsets.zero,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(_cardRadius),
+        child: child,
+      ),
+    );
+  }
+
+  Widget _buildUserProfile(
+      BuildContext context, DashBoardController controller, bool isDarkMode) {
+    final name =
+        "${controller.userModel?.data?.prenom ?? ''} ${controller.userModel?.data?.nom ?? ''}"
+            .trim();
+    final contact = (controller.userModel?.data?.email != null &&
+            controller.userModel!.data!.email!.isNotEmpty &&
+            controller.userModel!.data!.email != 'null')
+        ? controller.userModel!.data!.email!
+        : (controller.userModel?.data?.phone != null &&
+                controller.userModel!.data!.phone!.isNotEmpty &&
+                controller.userModel!.data!.phone != 'null')
+            ? controller.userModel!.data!.phone!
+            : '';
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(_cardRadius),
+        color: isDarkMode ? AppThemeData.grey800 : Colors.white,
+        border: Border.all(
+          color: isDarkMode ? AppThemeData.grey200Dark : AppThemeData.grey200,
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(14),
             child: _buildProfileImage(controller, isDarkMode),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${controller.userModel?.data?.prenom ?? ''} ${controller.userModel?.data?.nom ?? ''}",
+                  name.isEmpty ? '—' : name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 16.5,
+                    fontWeight: FontWeight.w700,
                     fontFamily: 'Cairo',
                     color: isDarkMode
                         ? AppThemeData.grey900Dark
                         : AppThemeData.grey900,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Text(
-                  (controller.userModel?.data?.email != null &&
-                          controller.userModel!.data!.email!.isNotEmpty &&
-                          controller.userModel!.data!.email != 'null')
-                      ? controller.userModel!.data!.email!
-                      : (controller.userModel?.data?.phone != null &&
-                              controller.userModel!.data!.phone!.isNotEmpty &&
-                              controller.userModel!.data!.phone != 'null')
-                          ? controller.userModel!.data!.phone!
-                          : '',
+                  contact,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 13,
                     fontFamily: 'Cairo',
                     color: isDarkMode
                         ? AppThemeData.grey400Dark
@@ -273,18 +319,22 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(width: 10),
           InkWell(
             onTap: () => Get.to(() => MyProfileScreen()),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppThemeData.primary50,
-                borderRadius: BorderRadius.circular(8),
+                color: AppThemeData.primary200.withValues(alpha: 0.10),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: AppThemeData.primary200.withValues(alpha: 0.20),
+                ),
               ),
               child: Icon(
                 Iconsax.edit_2,
-                size: 20,
+                size: 18,
                 color: AppThemeData.primary200,
               ),
             ),
@@ -296,15 +346,15 @@ class SettingsScreen extends StatelessWidget {
 
   Widget _buildSectionHeader(String title, bool isDarkMode) {
     return Padding(
-      padding: const EdgeInsets.only(left: 4, bottom: 4),
+      padding: const EdgeInsets.only(left: 4, bottom: 2),
       child: Text(
         title.toUpperCase(),
         style: TextStyle(
           color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey500,
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
+          fontSize: _sectionSize,
+          fontWeight: FontWeight.w700,
           fontFamily: 'Cairo',
-          letterSpacing: 0.8,
+          letterSpacing: 0.7,
         ),
       ),
     );
@@ -313,8 +363,9 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildDivider(bool isDarkMode) {
     return Divider(
       height: 1,
-      thickness: 0.5,
-      indent: 56,
+      thickness: 0.6,
+      indent: 52,
+      endIndent: 6,
       color: isDarkMode ? AppThemeData.grey200Dark : AppThemeData.grey200,
     );
   }
@@ -327,37 +378,46 @@ class SettingsScreen extends StatelessWidget {
     required VoidCallback onTap,
     Color? textColor,
   }) {
+    final mainText = textColor ??
+        (isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900);
     final iconColor = textColor ??
         (isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey500);
 
     return ListTile(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      dense: true,
+      visualDensity: VisualDensity.compact, // يقلّل الحجم بشكل أنيق
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: _tileHPadding,
+        vertical: _tileVPadding,
+      ),
       leading: Container(
-        padding: const EdgeInsets.all(8),
+        height: _iconBox,
+        width: _iconBox,
         decoration: BoxDecoration(
-          color: (textColor ?? AppThemeData.primary200).withValues(alpha:0.1),
-          borderRadius: BorderRadius.circular(8),
+          color: (textColor ?? AppThemeData.primary200).withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color:
+                (textColor ?? AppThemeData.primary200).withValues(alpha: 0.18),
+          ),
         ),
-        child: Icon(
-          icon,
-          size: 20,
-          color: iconColor,
-        ),
+        child: Icon(icon, size: _iconSize, color: iconColor),
       ),
       title: Text(
         title,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+          fontSize: _titleSize,
+          fontWeight: FontWeight.w600,
           fontFamily: 'Cairo',
-          color: textColor ??
-              (isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900),
+          color: mainText,
         ),
       ),
       trailing: Icon(
-        Iconsax.arrow_right_3,
-        size: 18,
+        Icons.arrow_forward_ios,
+        size: 16,
         color: isDarkMode ? AppThemeData.grey300Dark : AppThemeData.grey400,
       ),
     );
@@ -366,34 +426,46 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildDarkModeToggle(
       BuildContext context, bool isDarkMode, DarkThemeProvider themeChange) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      dense: true,
+      visualDensity: VisualDensity.compact,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: _tileHPadding,
+        vertical: _tileVPadding,
+      ),
       leading: Container(
-        padding: const EdgeInsets.all(8),
+        height: _iconBox,
+        width: _iconBox,
         decoration: BoxDecoration(
-          color: AppThemeData.primary200.withValues(alpha:0.1),
-          borderRadius: BorderRadius.circular(8),
+          color: AppThemeData.primary200.withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: AppThemeData.primary200.withValues(alpha: 0.18),
+          ),
         ),
         child: Icon(
           isDarkMode ? Iconsax.moon : Iconsax.sun_1,
-          size: 20,
+          size: _iconSize,
           color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey500,
         ),
       ),
       title: Text(
         'Dark Mode'.tr,
         style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+          fontSize: _titleSize,
+          fontWeight: FontWeight.w600,
           fontFamily: 'Cairo',
           color: isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
         ),
       ),
-      trailing: Switch(
-        value: isDarkMode,
-        activeThumbColor: AppThemeData.primary200,
-        onChanged: (value) {
-          themeChange.darkTheme = value ? 0 : 1;
-        },
+      trailing: Transform.scale(
+        scale: 0.92, // تصغير بسيط بدل الضخامة
+        child: Switch(
+          value: isDarkMode,
+          activeThumbColor: AppThemeData.primary200,
+          onChanged: (value) {
+            themeChange.darkTheme = value ? 0 : 1;
+          },
+        ),
       ),
     );
   }
@@ -403,50 +475,54 @@ class SettingsScreen extends StatelessWidget {
 
     if (photoPath.isEmpty || photoPath == 'null') {
       return Container(
-        height: 64,
-        width: 64,
+        height: 54,
+        width: 54,
         decoration: BoxDecoration(
-          color: AppThemeData.grey200,
-          borderRadius: BorderRadius.circular(12),
+          color: isDarkMode ? AppThemeData.grey800 : AppThemeData.grey200,
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Icon(
           Iconsax.user,
-          size: 32,
-          color: AppThemeData.grey400,
+          size: 26,
+          color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey400,
         ),
       );
     }
 
     return CachedNetworkImage(
       imageUrl: photoPath,
-      height: 64,
-      width: 64,
+      height: 54,
+      width: 54,
       fit: BoxFit.cover,
       placeholder: (context, url) => Container(
-        height: 64,
-        width: 64,
+        height: 54,
+        width: 54,
         decoration: BoxDecoration(
-          color: AppThemeData.grey200,
-          borderRadius: BorderRadius.circular(12),
+          color: isDarkMode ? AppThemeData.grey800 : AppThemeData.grey200,
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            color: AppThemeData.primary200,
+          child: SizedBox(
+            height: 18,
+            width: 18,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppThemeData.primary200,
+            ),
           ),
         ),
       ),
       errorWidget: (context, url, error) => Container(
-        height: 64,
-        width: 64,
+        height: 54,
+        width: 54,
         decoration: BoxDecoration(
-          color: AppThemeData.grey200,
-          borderRadius: BorderRadius.circular(12),
+          color: isDarkMode ? AppThemeData.grey200Dark : AppThemeData.grey200,
+          borderRadius: BorderRadius.circular(14),
         ),
         child: Icon(
           Iconsax.user,
-          size: 32,
-          color: AppThemeData.grey400,
+          size: 26,
+          color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey400,
         ),
       ),
     );

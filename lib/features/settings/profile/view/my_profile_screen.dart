@@ -13,7 +13,6 @@ import 'package:cabme/common/widget/text_field.dart';
 import 'package:cabme/common/widget/light_bordered_card.dart';
 import 'package:cabme/core/themes/button_them.dart';
 import 'package:cabme/core/themes/constant_colors.dart';
-import 'package:cabme/core/themes/responsive.dart';
 import 'package:cabme/core/themes/text_field_them.dart';
 import 'package:cabme/core/utils/Preferences.dart';
 import 'package:cabme/core/utils/dark_theme_provider.dart';
@@ -29,26 +28,33 @@ class MyProfileScreen extends StatelessWidget {
   MyProfileScreen({super.key});
 
   final GlobalKey<FormState> _profileKey = GlobalKey();
-
   final dashboardController = Get.put(DashBoardController());
+
+  // UI tokens
+  static const double _pagePadding = 16;
+  static const double _cardRadius = 18;
+  static const double _avatarSize = 92;
+  static const double _editFab = 34;
 
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     return GetX<MyProfileController>(
-        init: MyProfileController(),
-        builder: (myProfileController) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: CustomAppBar(
-              title: 'My Profile'.tr,
-              showBackButton: true,
-              onBackPressed: () => Get.back(),
-            ),
-            bottomNavigationBar: SafeArea(
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      init: MyProfileController(),
+      builder: (myProfileController) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: CustomAppBar(
+            title: 'My Profile'.tr,
+            showBackButton: true,
+            onBackPressed: () => Get.back(),
+          ),
+          bottomNavigationBar: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
+              child: LightBorderedCard(
+                margin: EdgeInsets.zero,
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 child: buildShowDetails(
                   isTrailingShow: false,
                   textIconColor: AppThemeData.error200,
@@ -67,8 +73,8 @@ class MyProfileScreen extends StatelessWidget {
                       onConfirm: () {
                         myProfileController
                             .deleteAccount(
-                                Preferences.getInt(Preferences.userId)
-                                    .toString())
+                              Preferences.getInt(Preferences.userId).toString(),
+                            )
                             .then((value) {
                           if (value != null) {
                             if (value["success"] == "success") {
@@ -85,302 +91,352 @@ class MyProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(16),
-                      child: Form(
-                        key: _profileKey,
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 16),
-                            // Profile Image
-                            _buildProfileImage(
-                                context, myProfileController, themeChange),
-                            const SizedBox(height: 32),
-                            // Form Fields
-                            LightBorderedCard(
-                              margin: EdgeInsets.zero,
-                              child: Column(
-                                children: [
-                                  // Name Fields Row
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: CustomTextField(
-                                          text: 'Name'.tr,
-                                          controller: myProfileController
-                                              .fullNameController.value,
-                                          keyboardType: TextInputType.text,
-                                          maxWords: 22,
-                                          validationType: ValidationType.name,
-                                          prefixIcon: Icon(
-                                            Iconsax.user,
-                                            size: 20,
-                                            color: themeChange.getThem()
-                                                ? AppThemeData.grey400Dark
-                                                : AppThemeData.grey500,
-                                          ),
-                                          validator: (String? value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'required'.tr;
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Expanded(
-                                        child: CustomTextField(
-                                          text: 'Last Name'.tr,
-                                          controller: myProfileController
-                                              .lastNameController.value,
-                                          keyboardType: TextInputType.text,
-                                          maxWords: 22,
-                                          validationType: ValidationType.name,
-                                          prefixIcon: Icon(
-                                            Iconsax.user,
-                                            size: 20,
-                                            color: themeChange.getThem()
-                                                ? AppThemeData.grey400Dark
-                                                : AppThemeData.grey500,
-                                          ),
-                                          validator: (String? value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'required'.tr;
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 16),
-                                  // Phone Number Field
-                                  CustomTextField(
-                                    text: 'Enter mobile number'.tr,
-                                    controller: myProfileController
-                                        .phoneController.value,
-                                    keyboardType: TextInputType.phone,
-                                    validationType: ValidationType.phone,
-                                    prefixIcon: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Iconsax.mobile,
-                                          size: 20,
+          ),
+          body: SafeArea(
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(_pagePadding),
+                    child: Form(
+                      key: _profileKey,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 6),
+
+                          // Avatar (أهدى وأشيك)
+                          _buildProfileImage(context, myProfileController, themeChange),
+
+                          const SizedBox(height: 16),
+
+                          // Fields Card
+                          LightBorderedCard(
+                            margin: EdgeInsets.zero,
+                            padding: const EdgeInsets.all(14),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CustomTextField(
+                                        text: 'Name'.tr,
+                                        controller: myProfileController
+                                            .fullNameController.value,
+                                        keyboardType: TextInputType.text,
+                                        maxWords: 22,
+                                        validationType: ValidationType.name,
+                                        prefixIcon: Icon(
+                                          Iconsax.user,
+                                          size: 18,
                                           color: themeChange.getThem()
                                               ? AppThemeData.grey400Dark
                                               : AppThemeData.grey500,
                                         ),
-                                        const SizedBox(width: 8),
-                                        CustomText(
-                                          text: "+965",
-                                          size: 16,
-                                          weight: FontWeight.w600,
+                                        validator: (String? value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'required'.tr;
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: CustomTextField(
+                                        text: 'Last Name'.tr,
+                                        controller: myProfileController
+                                            .lastNameController.value,
+                                        keyboardType: TextInputType.text,
+                                        maxWords: 22,
+                                        validationType: ValidationType.name,
+                                        prefixIcon: Icon(
+                                          Iconsax.user,
+                                          size: 18,
                                           color: themeChange.getThem()
-                                              ? AppThemeData.grey900Dark
-                                              : AppThemeData.grey900,
+                                              ? AppThemeData.grey400Dark
+                                              : AppThemeData.grey500,
                                         ),
-                                        const SizedBox(width: 4),
-                                      ],
+                                        validator: (String? value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'required'.tr;
+                                          }
+                                          return null;
+                                        },
+                                      ),
                                     ),
-                                    onChanged: (value) {
-                                      myProfileController
-                                          .phoneController.value.text = value;
-                                    },
+                                  ],
+                                ),
+                                const SizedBox(height: 12),
+
+                                CustomTextField(
+                                  text: 'Enter mobile number'.tr,
+                                  controller:
+                                      myProfileController.phoneController.value,
+                                  keyboardType: TextInputType.phone,
+                                  validationType: ValidationType.phone,
+                                  prefixIcon: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Iconsax.mobile,
+                                        size: 18,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey400Dark
+                                            : AppThemeData.grey500,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      CustomText(
+                                        text: "+965",
+                                        size: 14.5,
+                                        weight: FontWeight.w700,
+                                        color: themeChange.getThem()
+                                            ? AppThemeData.grey900Dark
+                                            : AppThemeData.grey900,
+                                      ),
+                                      const SizedBox(width: 4),
+                                    ],
                                   ),
-                                  const SizedBox(height: 16),
-                                  // Email Field
-                                  CustomTextField(
-                                    text: 'email'.tr,
-                                    controller: myProfileController
-                                        .emailController.value,
-                                    keyboardType: TextInputType.emailAddress,
-                                    readOnly: true,
-                                    validationType: ValidationType.email,
-                                    prefixIcon: Icon(
-                                      Iconsax.sms,
-                                      size: 20,
-                                      color: themeChange.getThem()
-                                          ? AppThemeData.grey400Dark
-                                          : AppThemeData.grey500,
-                                    ),
-                                    validator: (String? value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'email not valid'.tr;
-                                      }
-                                      bool emailValid = RegExp(
-                                              r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                                          .hasMatch(value);
-                                      if (!emailValid) {
-                                        return 'email not valid'.tr;
-                                      }
-                                      return null;
-                                    },
+                                  onChanged: (value) {
+                                    myProfileController.phoneController.value.text = value;
+                                  },
+                                ),
+
+                                const SizedBox(height: 12),
+
+                                CustomTextField(
+                                  text: 'email'.tr,
+                                  controller:
+                                      myProfileController.emailController.value,
+                                  keyboardType: TextInputType.emailAddress,
+                                  readOnly: true,
+                                  validationType: ValidationType.email,
+                                  prefixIcon: Icon(
+                                    Iconsax.sms,
+                                    size: 18,
+                                    color: themeChange.getThem()
+                                        ? AppThemeData.grey400Dark
+                                        : AppThemeData.grey500,
                                   ),
-                                ],
-                              ),
+                                  validator: (String? value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'email not valid'.tr;
+                                    }
+                                    bool emailValid = RegExp(
+                                            r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                                        .hasMatch(value);
+                                    if (!emailValid) {
+                                      return 'email not valid'.tr;
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 24),
-                          ],
-                        ),
+                          ),
+
+                          const SizedBox(height: 14),
+                        ],
                       ),
                     ),
                   ),
-                  // Save Details Button - Fixed at bottom
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: CustomButton(
-                      btnName: 'Save Details'.tr,
-                      ontap: () async {
-                        FocusScope.of(context).unfocus();
-                        if (_profileKey.currentState!.validate()) {
-                          await myProfileController
-                              .updateUser(
-                            image:
-                                File(myProfileController.imageData.value.path),
-                            name: myProfileController
-                                .fullNameController.value.text
-                                .trim(),
-                            lname: myProfileController
-                                .lastNameController.value.text
-                                .trim(),
-                            email: myProfileController
-                                .emailController.value.text
-                                .trim(),
-                            phoneNum: myProfileController
-                                .phoneController.value.text
-                                .trim(),
-                            password: myProfileController
-                                .currentPasswordController.value.text
-                                .trim(),
-                          )
-                              .then((value) {
-                            if (value != null) {
-                              if (value.success == "success") {
-                                Preferences.setInt(Preferences.userId,
-                                    int.parse(value.data!.id.toString()));
-                                Preferences.setString(
-                                    Preferences.user, jsonEncode(value));
-                                final DashBoardController dashboardController =
-                                    Get.find<DashBoardController>();
+                ),
 
-                                dashboardController.userModel =
-                                    Constant.getUserData();
-                                dashboardController.userModel!.data!.photoPath =
-                                    "${dashboardController.userModel!.data!.photoPath}?refresh=${DateTime.now().microsecondsSinceEpoch}";
-                                dashboardController.update();
-                                Get.back();
-                              } else {
-                                ShowToastDialog.showToast(value.error);
-                              }
-                            }
-                          });
-                        }
-                      },
-                      buttonColor: AppThemeData.primary200,
-                      textColor: Colors.white,
-                      borderRadius: 16,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
-  Widget _buildProfileImage(BuildContext context,
-      MyProfileController controller, DarkThemeProvider themeChange) {
-    final isDarkMode = themeChange.getThem();
-    return Center(
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: isDarkMode ? AppThemeData.grey200Dark : Colors.white,
-                width: 4,
-              ),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: controller.imageData.value.path.isNotEmpty
-                  ? Image.file(
-                      File(controller.imageData.value.path),
-                      height: 120,
-                      width: 120,
-                      fit: BoxFit.cover,
-                    )
-                  : (controller.photoPath.isEmpty ||
-                          controller.photoPath.toString() == 'null')
-                      ? Container(
-                          height: 120,
-                          width: 120,
-                          color: AppThemeData.grey200,
-                          child: Icon(
-                            Iconsax.user,
-                            size: 60,
-                            color: AppThemeData.grey400,
-                          ),
+                // Save Button ثابت تحت
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: CustomButton(
+                    btnName: 'Save Details'.tr,
+                    ontap: () async {
+                      FocusScope.of(context).unfocus();
+                      if (_profileKey.currentState!.validate()) {
+                        await myProfileController
+                            .updateUser(
+                          image: File(myProfileController.imageData.value.path),
+                          name: myProfileController.fullNameController.value.text.trim(),
+                          lname: myProfileController.lastNameController.value.text.trim(),
+                          email: myProfileController.emailController.value.text.trim(),
+                          phoneNum: myProfileController.phoneController.value.text.trim(),
+                          password: myProfileController.currentPasswordController.value.text.trim(),
                         )
-                      : CachedNetworkImage(
-                          imageUrl: controller.photoPath.toString(),
-                          height: 120,
-                          width: 120,
-                          fit: BoxFit.cover,
-                          progressIndicatorBuilder:
-                              (context, url, downloadProgress) => Center(
-                            child: CircularProgressIndicator(
-                              value: downloadProgress.progress,
-                              color: AppThemeData.primary200,
-                            ),
-                          ),
-                          errorWidget: (context, url, error) => Container(
-                            height: 120,
-                            width: 120,
-                            color: AppThemeData.grey200,
-                            child: Icon(
-                              Iconsax.user,
-                              size: 60,
-                              color: AppThemeData.grey400,
-                            ),
-                          ),
-                        ),
+                            .then((value) {
+                          if (value != null) {
+                            if (value.success == "success") {
+                              Preferences.setInt(
+                                Preferences.userId,
+                                int.parse(value.data!.id.toString()),
+                              );
+                              Preferences.setString(Preferences.user, jsonEncode(value));
+
+                              final DashBoardController dashboardController =
+                                  Get.find<DashBoardController>();
+
+                              dashboardController.userModel = Constant.getUserData();
+                              dashboardController.userModel!.data!.photoPath =
+                                  "${dashboardController.userModel!.data!.photoPath}?refresh=${DateTime.now().microsecondsSinceEpoch}";
+                              dashboardController.update();
+                              Get.back();
+                            } else {
+                              ShowToastDialog.showToast(value.error);
+                            }
+                          }
+                        });
+                      }
+                    },
+                    buttonColor: AppThemeData.primary200,
+                    textColor: Colors.white,
+                    borderRadius: 14,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: InkWell(
-              onTap: () => buildBottomSheet(context, controller),
-              borderRadius: BorderRadius.circular(25),
-              child: Container(
+        );
+      },
+    );
+  }
+
+  Widget _buildProfileImage(
+    BuildContext context,
+    MyProfileController controller,
+    DarkThemeProvider themeChange,
+  ) {
+    final isDarkMode = themeChange.getThem();
+
+    return Center(
+      child: Column(
+        children: [
+          Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Container(
+                height: _avatarSize,
+                width: _avatarSize,
                 decoration: BoxDecoration(
-                  color: AppThemeData.primary200,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color:
-                        isDarkMode ? AppThemeData.surface50Dark : Colors.white,
+                    color: isDarkMode ? AppThemeData.grey200Dark : AppThemeData.grey100,
                     width: 3,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.08),
+                      blurRadius: 14,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
                 ),
-                padding: const EdgeInsets.all(10.0),
-                child: const Icon(
-                  Iconsax.edit_2,
-                  size: 20,
-                  color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(999),
+                  child: controller.imageData.value.path.isNotEmpty
+                      ? Image.file(
+                          File(controller.imageData.value.path),
+                          height: _avatarSize,
+                          width: _avatarSize,
+                          fit: BoxFit.cover,
+                        )
+                      : (controller.photoPath.isEmpty ||
+                              controller.photoPath.toString() == 'null')
+                          ? Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppThemeData.primary200.withValues(alpha: 0.12),
+                                    AppThemeData.primary200.withValues(alpha: 0.05),
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              child: Icon(
+                                Iconsax.user,
+                                size: 42,
+                                color: AppThemeData.primary200,
+                              ),
+                            )
+                          : CachedNetworkImage(
+                              imageUrl: controller.photoPath.toString(),
+                              height: _avatarSize,
+                              width: _avatarSize,
+                              fit: BoxFit.cover,
+                              progressIndicatorBuilder: (context, url, progress) => Center(
+                                child: SizedBox(
+                                  height: 18,
+                                  width: 18,
+                                  child: CircularProgressIndicator(
+                                    value: progress.progress,
+                                    color: AppThemeData.primary200,
+                                    strokeWidth: 2,
+                                  ),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      AppThemeData.primary200.withValues(alpha: 0.12),
+                                      AppThemeData.primary200.withValues(alpha: 0.05),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                ),
+                                child: Icon(
+                                  Iconsax.user,
+                                  size: 42,
+                                  color: AppThemeData.primary200,
+                                ),
+                              ),
+                            ),
                 ),
               ),
+
+              // Edit button
+              Positioned(
+                bottom: 2,
+                right: 2,
+                child: InkWell(
+                  onTap: () => buildBottomSheet(context, controller),
+                  borderRadius: BorderRadius.circular(999),
+                  child: Container(
+                    height: _editFab,
+                    width: _editFab,
+                    decoration: BoxDecoration(
+                      color: AppThemeData.primary200,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: isDarkMode ? AppThemeData.surface50Dark : Colors.white,
+                        width: 2.5,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppThemeData.primary200.withValues(alpha: 0.28),
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Iconsax.edit_2,
+                      size: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            "Tap to change photo".tr,
+            style: TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 12.5,
+              fontWeight: FontWeight.w600,
+              color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey500,
             ),
           ),
         ],
@@ -397,36 +453,41 @@ class MyProfileScreen extends StatelessWidget {
     bool? isTrailingShow = true,
   }) {
     return ListTile(
+      onTap: onPress,
+      dense: true,
+      visualDensity: VisualDensity.compact,
       splashColor: Colors.transparent,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       leading: Container(
-        padding: const EdgeInsets.all(8),
+        height: 38,
+        width: 38,
         decoration: BoxDecoration(
-          color: (textIconColor ?? AppThemeData.error200).withValues(alpha:0.1),
-          borderRadius: BorderRadius.circular(8),
+          color: (textIconColor ?? AppThemeData.error200).withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: (textIconColor ?? AppThemeData.error200).withValues(alpha: 0.18),
+          ),
         ),
         child: Icon(
           icon,
-          size: 20,
+          size: 18,
           color: textIconColor ??
               (isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900),
         ),
       ),
       title: CustomText(
         text: title,
-        size: 16,
-        weight: FontWeight.w500,
+        size: 15,
+        weight: FontWeight.w700,
         color: textIconColor ??
             (isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900),
       ),
-      onTap: onPress,
       trailing: isTrailingShow == false
           ? null
           : Icon(
               Iconsax.arrow_right_3,
-              size: 20,
-              color:
-                  isDarkMode ? AppThemeData.grey300Dark : AppThemeData.grey400,
+              size: 16,
+              color: isDarkMode ? AppThemeData.grey300Dark : AppThemeData.grey400,
             ),
     );
   }
@@ -441,41 +502,40 @@ class MyProfileScreen extends StatelessWidget {
   }) {
     return Get.defaultDialog(
       titlePadding: const EdgeInsets.only(top: 20),
-      radius: 6,
+      radius: 10,
       title: "Change Information".tr,
-      titleStyle: const TextStyle(
-        fontSize: 20,
-      ),
+      titleStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
       content: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFieldThem.boxBuildTextField(
-                conext: context,
-                hintText: title,
-                controller: controller,
-                validators: validators),
-            const SizedBox(
-              height: 20,
+              conext: context,
+              hintText: title,
+              controller: controller,
+              validators: validators,
             ),
+            const SizedBox(height: 16),
             Row(
               children: [
-                ButtonThem.buildButton(context,
-                    title: "Save".tr,
-                    btnColor: AppThemeData.primary200,
-                    txtColor: Colors.white,
-                    onPress: onSubmitBtn,
-                    btnWidthRatio: 0.3),
-                const SizedBox(
-                  width: 15,
+                ButtonThem.buildButton(
+                  context,
+                  title: "Save".tr,
+                  btnColor: AppThemeData.primary200,
+                  txtColor: Colors.white,
+                  onPress: onSubmitBtn,
+                  btnWidthRatio: 0.34,
                 ),
-                ButtonThem.buildButton(context,
-                    title: "cancel".tr,
-                    btnWidthRatio: 0.3,
-                    btnColor: AppThemeData.secondary200,
-                    txtColor: Colors.black,
-                    onPress: () => Get.back()),
+                const SizedBox(width: 12),
+                ButtonThem.buildButton(
+                  context,
+                  title: "cancel".tr,
+                  btnWidthRatio: 0.34,
+                  btnColor: AppThemeData.secondary200,
+                  txtColor: Colors.black,
+                  onPress: () => Get.back(),
+                ),
               ],
             )
           ],
@@ -484,112 +544,140 @@ class MyProfileScreen extends StatelessWidget {
     );
   }
 
-  Future buildBottomSheet(
-      BuildContext context, MyProfileController controller) {
+  Future buildBottomSheet(BuildContext context, MyProfileController controller) {
+    final themeChange = Provider.of<DarkThemeProvider>(context, listen: false);
+    final isDarkMode = themeChange.getThem();
+
     return showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Container(
-              height: Responsive.height(22, context),
-              color: Colors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: false,
+      builder: (context) {
+        return Container(
+          margin: const EdgeInsets.all(12),
+          padding: const EdgeInsets.fromLTRB(14, 10, 14, 16),
+          decoration: BoxDecoration(
+            color: isDarkMode ? AppThemeData.surface50Dark : Colors.white,
+            borderRadius: BorderRadius.circular(_cardRadius),
+            border: Border.all(
+              color: isDarkMode ? AppThemeData.grey200Dark : AppThemeData.grey200,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.08),
+                blurRadius: 18,
+                offset: const Offset(0, -2),
+              )
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 4),
+                width: 42,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: isDarkMode ? AppThemeData.grey300Dark : AppThemeData.grey300,
+                  borderRadius: BorderRadius.circular(99),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Choose source".tr,
+                  style: TextStyle(
+                    fontFamily: 'Cairo',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                    color: isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: CustomText(
-                      text: "Please Select".tr,
-                      size: 16,
-                      weight: FontWeight.w600,
-                      color: const Color(0XFF333333).withValues(alpha:0.8),
+                  Expanded(
+                    child: _pickCard(
+                      isDarkMode: isDarkMode,
+                      title: "camera".tr,
+                      icon: Iconsax.camera,
+                      tint: AppThemeData.primary200,
+                      onTap: () => pickFile(controller, source: ImageSource.camera),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            IconButton(
-                                onPressed: () => pickFile(controller,
-                                    source: ImageSource.camera),
-                                icon: const Icon(
-                                  Iconsax.camera,
-                                  size: 32,
-                                  color: Colors.black,
-                                )),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: CustomText(
-                                text: "camera".tr,
-                                size: 14,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            IconButton(
-                                onPressed: () => pickFile(controller,
-                                    source: ImageSource.gallery),
-                                icon: const Icon(
-                                  Iconsax.gallery,
-                                  size: 32,
-                                  color: Colors.black,
-                                )),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 3),
-                              child: CustomText(
-                                text: "gallery".tr,
-                                size: 14,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _pickCard(
+                      isDarkMode: isDarkMode,
+                      title: "gallery".tr,
+                      icon: Iconsax.gallery,
+                      tint: AppThemeData.secondary200,
+                      onTap: () => pickFile(controller, source: ImageSource.gallery),
+                    ),
                   ),
                 ],
               ),
-            );
-          });
-        });
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _pickCard({
+    required bool isDarkMode,
+    required String title,
+    required IconData icon,
+    required Color tint,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: tint.withValues(alpha: 0.08),
+          border: Border.all(color: tint.withValues(alpha: 0.18)),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 44,
+              width: 44,
+              decoration: BoxDecoration(
+                color: tint.withValues(alpha: 0.14),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, size: 22, color: tint),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 13.5,
+                fontWeight: FontWeight.w700,
+                color: isDarkMode ? AppThemeData.grey900Dark : AppThemeData.grey900,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   final ImagePicker _imagePicker = ImagePicker();
 
-  Future pickFile(MyProfileController controller,
-      {required ImageSource source}) async {
+  Future pickFile(MyProfileController controller, {required ImageSource source}) async {
     try {
       XFile? image = await _imagePicker.pickImage(source: source);
       if (image == null) return;
       Get.back();
       controller.imageData.value = image;
-      // controller.uploadPhoto(File(image.path)).then((value) {
-      //   if (value != null) {
-      //     if (value["success"] == "Success") {
-      //       UserModel userModel = Constant.getUserData();
-      //       userModel.data!.photoPath = value['data']['photo_path'];
-      //       Preferences.setString(Preferences.user, jsonEncode(userModel.toJson()));
-      //       controller.getUsrData();
-      //       dashboardController.getUsrData();
-      //       ShowToastDialog.showToast("Upload successfully!".tr);
-      //     } else {
-      //       ShowToastDialog.showToast(value['error']);
-      //     }
-      //   }
-      // });
     } on PlatformException catch (e) {
       ShowToastDialog.showToast("${"Failed to Pick :".tr}\n $e");
     }

@@ -52,9 +52,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         key: _passwordKey,
                         child: Column(
                           children: [
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 8),
                             LightBorderedCard(
                               margin: EdgeInsets.zero,
+                              padding: const EdgeInsets.all(14),
                               child: Column(
                                 children: [
                                   // Current Password Field
@@ -68,7 +69,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     validationType: ValidationType.required,
                                     prefixIcon: Icon(
                                       Iconsax.lock,
-                                      size: 20,
+                                      size: 18,
                                       color: isDarkMode
                                           ? AppThemeData.grey400Dark
                                           : AppThemeData.grey500,
@@ -78,7 +79,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         _isCurrentPasswordVisible
                                             ? Iconsax.eye
                                             : Iconsax.eye_slash,
-                                        size: 20,
+                                        size: 18,
                                         color: isDarkMode
                                             ? AppThemeData.grey400Dark
                                             : AppThemeData.grey500,
@@ -97,7 +98,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       return null;
                                     },
                                   ),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 12),
                                   // New Password Field
                                   CustomTextField(
                                     text: 'New Password'.tr,
@@ -110,7 +111,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     minPasswordLength: 6,
                                     prefixIcon: Icon(
                                       Iconsax.lock,
-                                      size: 20,
+                                      size: 18,
                                       color: isDarkMode
                                           ? AppThemeData.grey400Dark
                                           : AppThemeData.grey500,
@@ -120,7 +121,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         _isNewPasswordVisible
                                             ? Iconsax.eye
                                             : Iconsax.eye_slash,
-                                        size: 20,
+                                        size: 18,
                                         color: isDarkMode
                                             ? AppThemeData.grey400Dark
                                             : AppThemeData.grey500,
@@ -143,7 +144,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       return null;
                                     },
                                   ),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 12),
                                   // Confirm Password Field
                                   CustomTextField(
                                     text: 'Confirm Password'.tr,
@@ -158,7 +159,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         .newPasswordController.value,
                                     prefixIcon: Icon(
                                       Iconsax.lock,
-                                      size: 20,
+                                      size: 18,
                                       color: isDarkMode
                                           ? AppThemeData.grey400Dark
                                           : AppThemeData.grey500,
@@ -168,7 +169,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         _isConfirmPasswordVisible
                                             ? Iconsax.eye
                                             : Iconsax.eye_slash,
-                                        size: 20,
+                                        size: 18,
                                         color: isDarkMode
                                             ? AppThemeData.grey400Dark
                                             : AppThemeData.grey500,
@@ -198,7 +199,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 16),
                           ],
                         ),
                       ),
@@ -206,7 +207,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                   // Save Password Button - Fixed at bottom
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                     child: CustomButton(
                       btnName: 'Save Password'.tr,
                       ontap: () {
@@ -239,8 +240,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       },
                       buttonColor: AppThemeData.primary200,
                       textColor: Colors.white,
-                      borderRadius: 16,
-                      fontSize: 16,
+                      borderRadius: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
