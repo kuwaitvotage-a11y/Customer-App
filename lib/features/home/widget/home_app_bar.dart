@@ -25,7 +25,7 @@ class HomeAppBar extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(top: 8),
         decoration: BoxDecoration(
-          color: isDarkMode ? AppThemeData.grey800Dark : Colors.white,
+          color: isDarkMode ? AppThemeData.grey800 : Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Material(

@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               controller.isHomePageLoading.value
                   ? LoadingScreen(controller: controller)
                   : RouteWrapperWidget(
-                      child: Column(
+                    child: Column(
                         children: [
                           Constant.homeScreenType == 'OlaHome'
                               ? SafeArea(child: SizedBox(height: 30))

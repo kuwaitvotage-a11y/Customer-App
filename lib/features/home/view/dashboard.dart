@@ -28,24 +28,28 @@ class _DashBoardState extends State<DashBoard> {
       init: DashBoardController(),
       builder: (controller) {
         controller.getDrawerItems();
-        return WillPopScope(
-          onWillPop: () async {
+        return PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) async {
+            if (didPop) return;
+            
             final timeGap = DateTime.now().difference(backPress);
             final cantExit = timeGap >= const Duration(seconds: 2);
             backPress = DateTime.now();
+            
             if (cantExit) {
               var snack = SnackBar(
                 content: Text(
                   'press_back_again_to_exit'.tr,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontFamily: 'Cairo'),
                 ),
                 duration: Duration(seconds: 2),
                 backgroundColor: Colors.black,
               );
               ScaffoldMessenger.of(context).showSnackBar(snack);
-              return false; // false will do nothing when back press
             } else {
-              return true; // true will exit the app
+              // Exit the app
+              Navigator.of(context).pop();
             }
           },
           child: Scaffold(
@@ -117,17 +121,17 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
       drawerOptions.add(
         Padding(
           padding: EdgeInsets.only(
-            top: isFirstItem ? 16 : 28,
-            bottom: 8,
-            left: 20,
-            right: 20,
+            top: isFirstItem ? 8 : 14, // تقليل كبير من 12 و 20
+            bottom: 4, // تقليل من 6 إلى 4
+            left: 14, // تقليل من 16 إلى 14
+            right: 14,
           ),
           child: CustomText(
             text: d.section ?? '',
             isPrimary: true,
-            size: 12,
+            size: 10, // تقليل من 11 إلى 10
             weight: FontWeight.w600,
-            letterSpacing: 1.2,
+            letterSpacing: 0.8, // تقليل من 1.0 إلى 0.8
           ),
         ),
       );
@@ -144,7 +148,7 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
     // Add menu item with modern card design
     drawerOptions.add(
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1.5), // تقليل كبير في المسافات
         child: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -156,12 +160,12 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                 controller.onSelectItem(i);
               }
             },
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(10), // تقليل من 12 إلى 10
             splashColor: AppThemeData.primary200.withValues(alpha:0.1),
             highlightColor: AppThemeData.primary200.withValues(alpha:0.05),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(10),
                 color: isSelected
                     ? AppThemeData.primary200.withValues(alpha:0.1)
                     : Colors.transparent,
@@ -172,11 +176,11 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                   width: 1,
                 ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8), // تقليل أكثر
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(5), // تقليل من 6 إلى 5
                     decoration: BoxDecoration(
                       color: isLogout
                           ? AppThemeData.error200.withValues(alpha:0.1)
@@ -185,11 +189,11 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                               : (isDarkMode
                                   ? AppThemeData.grey800Dark.withValues(alpha:0.5)
                                   : AppThemeData.grey100.withValues(alpha:0.8)),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(8), // تقليل من 10 إلى 8
                     ),
                     child: Icon(
                       _getIconData(d.icon),
-                      size: 22,
+                      size: 18, // تقليل من 20 إلى 18
                       color: isLogout
                           ? AppThemeData.error200
                           : isSelected
@@ -199,20 +203,23 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                                   : AppThemeData.grey800),
                     ),
                   ),
-                  const SizedBox(width: 14),
+                  const SizedBox(width: 10), // تقليل من 12 إلى 10
                   Expanded(
                     child: CustomText(
                       text: d.title,
                       isError: isLogout,
                       isPrimary: isSelected && !isLogout,
-                      size: 15,
+                      size: 13, // تقليل من 14 إلى 13
                       weight: isSelected ? FontWeight.w600 : FontWeight.w500,
                     ),
                   ),
                   d.isSwitch == null
                       ? Icon(
-                          Iconsax.arrow_right_3,
-                          size: 18,
+                          // ضبط اتجاه السهم حسب اللغة
+                          Directionality.of(context) == TextDirection.rtl
+                              ? Iconsax.arrow_left_3
+                              : Iconsax.arrow_right_3,
+                          size: 15, // تقليل من 16 إلى 15
                           color: isSelected
                               ? AppThemeData.primary200
                               : (isDarkMode
@@ -220,7 +227,7 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
                                   : AppThemeData.grey400),
                         )
                       : Transform.scale(
-                          scale: 0.85,
+                          scale: 0.75, // تقليل من 0.8 إلى 0.75
                           child: Switch(
                             trackOutlineColor:
                                 WidgetStateProperty.resolveWith<Color>(
@@ -250,12 +257,12 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
   }
 
   return Drawer(
-    width: Responsive.width(85, context),
+    width: Responsive.width(68, context), // تقليل أكثر من 75% إلى 68%
     backgroundColor:
         isDarkMode ? AppThemeData.surface50Dark : AppThemeData.surface50,
     child: Column(
       children: [
-        // Modern Header with Gradient
+        // Modern Header with Gradient - تقليل الحجم أكثر
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -270,57 +277,57 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
           child: SafeArea(
             bottom: false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 14), // تقليل أكثر
               child: Column(
                 children: [
-                  // Logo with modern container
+                  // Logo with modern container - تقليل الحجم أكثر
                   Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(8), // تقليل من 10 إلى 8
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(14), // تقليل
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha:0.1),
-                          blurRadius: 20,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 4),
+                          color: Colors.black.withValues(alpha:0.08),
+                          blurRadius: 12,
+                          spreadRadius: 0,
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
                     child: Image.asset(
                       "assets/icons/appLogo.png",
-                      height: 60,
-                      width: 60,
+                      height: 42, // تقليل من 50 إلى 42
+                      width: 42,
                       fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10), // تقليل من 12 إلى 10
                   // User Name
                   CustomText(
                     text:
                         "${controller.userModel?.data?.prenom ?? ''} ${controller.userModel?.data?.nom ?? ''}",
                     color: Colors.white,
-                    size: 20,
+                    size: 16, // تقليل من 18 إلى 16
                     weight: FontWeight.bold,
                     align: TextAlign.center,
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 3), // تقليل من 4 إلى 3
                   // User Email with icon
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Iconsax.sms,
-                        size: 14,
+                        size: 11, // تقليل من 12 إلى 11
                         color: Colors.white.withValues(alpha:0.9),
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 3),
                       Flexible(
                         child: CustomText(
                           text: controller.userModel?.data?.email ?? '',
                           color: Colors.white.withValues(alpha:0.9),
-                          size: 13,
+                          size: 11, // تقليل من 12 إلى 11
                           align: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -336,7 +343,7 @@ Drawer buildAppDrawer(BuildContext context, DashBoardController controller) {
         // Menu Items
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.only(top: 8, bottom: 20),
+            padding: const EdgeInsets.only(top: 2, bottom: 12), // تقليل أكثر
             children: drawerOptions,
           ),
         ),
