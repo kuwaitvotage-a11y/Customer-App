@@ -61,7 +61,7 @@ class _AddressSearchScreenState extends State<AddressSearchScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: const Icon(
-              Iconsax.arrow_left_2,
+              Icons.arrow_back_ios,
               color: Colors.white,
               size: 18,
             ),

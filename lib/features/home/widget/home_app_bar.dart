@@ -31,14 +31,14 @@ class HomeAppBar extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
               children: [
                 // Drawer Icon Button
                 Icon(
                   Iconsax.menu_1,
                   color: AppThemeData.primary200,
-                  size: 25,
+                  size: 22,
                 ),
 
                 const SizedBox(width: 10),
@@ -50,7 +50,7 @@ class HomeAppBar extends StatelessWidget {
                       controller: controller.currentLocationController,
                       readOnly: true,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: isDarkMode
                             ? AppThemeData.grey900Dark
@@ -60,7 +60,7 @@ class HomeAppBar extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'your_current_location'.tr,
                         hintStyle: TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           color: isDarkMode
                               ? AppThemeData.grey500Dark
                               : AppThemeData.grey500,
@@ -68,7 +68,7 @@ class HomeAppBar extends StatelessWidget {
                         ),
                         border: InputBorder.none,
                         contentPadding:
-                            const EdgeInsets.symmetric(vertical: 12),
+                            const EdgeInsets.symmetric(vertical: 0),
                         isDense: true,
                       ),
                     ),

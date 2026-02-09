@@ -745,4 +745,5 @@ const Map<String, String> enUS = {
   'Accept': 'Accept',
   'Decline': 'Decline',
   'Permission Denied': 'Permission Denied',
+  'done': 'Done',
 };

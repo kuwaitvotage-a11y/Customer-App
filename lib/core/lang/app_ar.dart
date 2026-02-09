@@ -730,4 +730,5 @@ const Map<String, String> arAE = {
   'Accept': 'قبول',
   'Decline': 'رفض',
   'Permission Denied': 'تم رفض الإذن',
+  'done': 'تم',
 };

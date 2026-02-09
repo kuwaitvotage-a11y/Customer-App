@@ -187,7 +187,10 @@ class LocationTextField extends StatelessWidget {
             : controller.destinationController,
         text: hintText,
         suffixIcon: Icon(
-          Iconsax.arrow_right_3,
+          // RTL-aware arrow: left for Arabic/Urdu, right for English
+          Get.locale?.languageCode == 'ar' || Get.locale?.languageCode == 'ur'
+              ? Iconsax.arrow_left_3
+              : Iconsax.arrow_right_3,
           size: 20,
           color: isDarkMode ? AppThemeData.grey400Dark : AppThemeData.grey400,
         ),

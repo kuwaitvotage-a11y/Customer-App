@@ -22,6 +22,7 @@ import 'package:cabme/features/home/widget/vehicle_selection_card.dart';
 import 'package:cabme/features/home/widget/pending_payment_dialog.dart';
 import 'package:cabme/features/home/widget/route_wrapper_widget.dart';
 import 'package:cabme/features/home/widget/sheets/trip_option_sheet.dart';
+import 'package:cabme/features/home/widget/floating_search_bar.dart';
 
 DateTime? scheduleRideDateTime;
 
@@ -252,44 +253,127 @@ class _HomeScreenState extends State<HomeScreen> {
                                       }
                                     },
                                   ),
-                                  SafeArea(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                      ),
-                                      child: HomeAppBar(
-                                        controller: controller,
-                                        isDarkMode: themeChange.getThem(),
-                                        scaffoldKey: _scaffoldKey,
-                                      ),
-                                    ),
+                                  // Floating search bar over the map with menu button
+                                  FloatingSearchBar(
+                                    controller: controller,
+                                    isDarkMode: themeChange.getThem(),
+                                    onMenuTap: () {
+                                      _scaffoldKey.currentState?.openDrawer();
+                                    },
                                   ),
+                                  // Current location button (bottom right)
                                   Positioned(
                                     bottom: 10,
                                     right: 10,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        showLog('pressed button');
-                                        controller.getCurrentLocation(true);
-                                      },
-                                      child: Container(
-                                        width: 45,
-                                        height: 45,
-                                        decoration: BoxDecoration(
-                                          color: themeChange.getThem()
-                                              ? AppThemeData.surface50Dark
-                                              : AppThemeData.surface50,
-                                          borderRadius: BorderRadius.circular(
-                                            10,
+                                    child: Column(
+                                      children: [
+                                        // Zoom in button
+                                        GestureDetector(
+                                          onTap: () {
+                                            controller.mapController?.animateCamera(
+                                              CameraUpdate.zoomIn(),
+                                            );
+                                          },
+                                          child: Container(
+                                            width: 45,
+                                            height: 45,
+                                            decoration: BoxDecoration(
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.surface50Dark
+                                                  : AppThemeData.surface50,
+                                              borderRadius: BorderRadius.circular(10),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black.withValues(alpha: 0.1),
+                                                  blurRadius: 10,
+                                                  spreadRadius: 1,
+                                                  offset: const Offset(0, 2),
+                                                ),
+                                              ],
+                                            ),
+                                            child: Icon(
+                                              Iconsax.add,
+                                              color: AppThemeData.primary200,
+                                              size: 24,
+                                            ),
                                           ),
                                         ),
-                                        padding: const EdgeInsets.all(10),
-                                        child: Image(
-                                          image: AssetImage(
-                                            'assets/icons/pickup.png',
+                                        const SizedBox(height: 8),
+                                        // Zoom out button
+                                        GestureDetector(
+                                          onTap: () {
+                                            controller.mapController?.animateCamera(
+                                              CameraUpdate.zoomOut(),
+                                            );
+                                          },
+                                          child: Container(
+                                            width: 45,
+                                            height: 45,
+                                            decoration: BoxDecoration(
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.surface50Dark
+                                                  : AppThemeData.surface50,
+                                              borderRadius: BorderRadius.circular(10),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black.withValues(alpha: 0.1),
+                                                  blurRadius: 10,
+                                                  spreadRadius: 1,
+                                                  offset: const Offset(0, 2),
+                                                ),
+                                              ],
+                                            ),
+                                            child: Icon(
+                                              Iconsax.minus,
+                                              color: AppThemeData.primary200,
+                                              size: 24,
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        const SizedBox(height: 8),
+                                        // Current location button
+                                        GestureDetector(
+                                          onTap: () async {
+                                            showLog('pressed button');
+                                            await controller.getCurrentLocation(true);
+                                            // Animate to current location
+                                            if (controller.departureLatLong.value != const LatLng(0.0, 0.0)) {
+                                              controller.mapController?.animateCamera(
+                                                CameraUpdate.newCameraPosition(
+                                                  CameraPosition(
+                                                    target: controller.departureLatLong.value,
+                                                    zoom: 15.0,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                          },
+                                          child: Container(
+                                            width: 45,
+                                            height: 45,
+                                            decoration: BoxDecoration(
+                                              color: themeChange.getThem()
+                                                  ? AppThemeData.surface50Dark
+                                                  : AppThemeData.surface50,
+                                              borderRadius: BorderRadius.circular(10),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black.withValues(alpha: 0.1),
+                                                  blurRadius: 10,
+                                                  spreadRadius: 1,
+                                                  offset: const Offset(0, 2),
+                                                ),
+                                              ],
+                                            ),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Image(
+                                              image: AssetImage(
+                                                'assets/icons/pickup.png',
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],

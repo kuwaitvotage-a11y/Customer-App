@@ -747,4 +747,5 @@ const Map<String, String> urPK = {
   'Accept': 'قبول کریں',
   'Decline': 'انکار کریں',
   'Permission Denied': 'اجازت مسترد',
+  'done': 'ہو گیا',
 };
