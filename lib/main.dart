@@ -10,9 +10,9 @@ void main() async {
 
   // Run app with Device Preview in debug mode only
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode, // Enable only in debug mode
-      builder: (context) => const MyApp(),
-    ),
+    // DevicePreview(
+    // enabled: !kReleaseMode, // Enable only in debug mode
+    /*   builder: (context) => const */ MyApp(),
+//    ),
   );
 }

@@ -533,7 +533,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               ),
               'orderId': int.parse(
                 json.decode(message.data['message'])['orderId'].toString(),
-              ),
+              ), 
               'receiverName':
                   json.decode(message.data['message'])['senderName'].toString(),
               'receiverPhoto': json
@@ -672,10 +672,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             title: 'Mshwar',
             debugShowCheckedModeBanner: false,
             // Device Preview integration
-            locale: DevicePreview.locale(context) ?? currentLocale,
+          //  locale: DevicePreview.locale(context) ?? currentLocale,
             builder: (context, child) {
               // Wrap with Device Preview builder
-              child = DevicePreview.appBuilder(context, child);
+      //        child = DevicePreview.appBuilder(context, child);
               return Directionality(
                 textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                 child: EasyLoading.init()(context, child),

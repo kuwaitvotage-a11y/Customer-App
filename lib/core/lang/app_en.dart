@@ -735,4 +735,14 @@ const Map<String, String> enUS = {
   'No Recent Searches': 'No Recent Searches',
   'Start typing to search for locations':
       'Start typing to search for locations',
+
+  // ============================================
+  // PERMISSION DIALOG
+  // ============================================
+  'Location Access Disclosure': 'Location Access Disclosure',
+  'We need access to your location to assign for booking feature.\n\nThis information will only be used for booking purpose and will not be shared with any third parties.':
+      'We need access to your location to assign for booking feature.\n\nThis information will only be used for booking purpose and will not be shared with any third parties.',
+  'Accept': 'Accept',
+  'Decline': 'Decline',
+  'Permission Denied': 'Permission Denied',
 };

@@ -720,4 +720,14 @@ const Map<String, String> arAE = {
   'Unknown': 'غير معروف',
   'No Recent Searches': 'لا توجد عمليات بحث حديثة',
   'Start typing to search for locations': 'ابدأ الكتابة للبحث عن المواقع',
+
+  // ============================================
+  // PERMISSION DIALOG
+  // ============================================
+  'Location Access Disclosure': 'الإفصاح عن الوصول إلى الموقع',
+  'We need access to your location to assign for booking feature.\n\nThis information will only be used for booking purpose and will not be shared with any third parties.':
+      'نحتاج إلى الوصول إلى موقعك لتعيين ميزة الحجز.\n\nسيتم استخدام هذه المعلومات فقط لغرض الحجز ولن تتم مشاركتها مع أي أطراف ثالثة.',
+  'Accept': 'قبول',
+  'Decline': 'رفض',
+  'Permission Denied': 'تم رفض الإذن',
 };

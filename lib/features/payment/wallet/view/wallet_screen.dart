@@ -2403,7 +2403,7 @@ class _WalletScreenState extends State<WalletScreen> {
           backgroundColor: Color(0xff635bff),
           content: Text(
             "Something went wrong, please contact admin.".tr,
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(fontSize: 17, fontFamily: 'Cairo'),
           )));
 
       return '';
@@ -2469,7 +2469,7 @@ class _WalletScreenState extends State<WalletScreen> {
           backgroundColor: Color(0xff635bff),
           content: Text(
             "Something went wrong, please contact admin.".tr,
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(fontSize: 17, fontFamily: 'Cairo'),
           )));
       return '';
     }

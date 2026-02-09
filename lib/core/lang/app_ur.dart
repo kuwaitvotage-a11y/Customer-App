@@ -737,4 +737,14 @@ const Map<String, String> urPK = {
   'No Recent Searches': 'کوئی حالیہ تلاش نہیں',
   'Start typing to search for locations':
       'مقامات تلاش کرنے کے لیے ٹائپ کرنا شروع کریں',
+
+  // ============================================
+  // PERMISSION DIALOG
+  // ============================================
+  'Location Access Disclosure': 'مقام تک رسائی کا انکشاف',
+  'We need access to your location to assign for booking feature.\n\nThis information will only be used for booking purpose and will not be shared with any third parties.':
+      'ہمیں بکنگ کی خصوصیت کے لیے آپ کے مقام تک رسائی کی ضرورت ہے۔\n\nیہ معلومات صرف بکنگ کے مقصد کے لیے استعمال کی جائیں گی اور کسی تیسرے فریق کے ساتھ شیئر نہیں کی جائیں گی۔',
+  'Accept': 'قبول کریں',
+  'Decline': 'انکار کریں',
+  'Permission Denied': 'اجازت مسترد',
 };

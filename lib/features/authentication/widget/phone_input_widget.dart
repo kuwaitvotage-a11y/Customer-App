@@ -247,7 +247,7 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Text(
-                    'Enter 8-digit Kuwait mobile number'.tr,
+                    'enter_8_digit_kuwait_mobile_number'.tr,
                     style: TextStyle(
                       fontSize: 12,
                       color: isDarkMode

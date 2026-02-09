@@ -144,7 +144,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen>
                                 IconButton(
                                   onPressed: () => Get.back(),
                                   icon: Icon(
-                                    Iconsax.arrow_left_2,
+                                    Icons.arrow_back_ios,
                                     color: Colors.white,
                                     size: 24,
                                   ),
