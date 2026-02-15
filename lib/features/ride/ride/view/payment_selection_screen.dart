@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as maths;
+import 'dart:ui' as BorderType;
 import 'package:cabme/core/constant/constant.dart';
 import 'package:cabme/core/constant/logdata.dart';
 import 'package:cabme/core/constant/show_toast_dialog.dart';
@@ -1748,9 +1749,6 @@ Widget buildListPromoCode(PaymentController controller, bool isDarkMode) {
                                             color:
                                                 Colors.black.withValues(alpha:0.05),
                                             child: DottedBorder(
-                                              color: Colors.grey,
-                                              strokeWidth: 1,
-                                              dashPattern: const [3, 3],
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(
@@ -1868,10 +1866,6 @@ Container couponCodeSheet(context, PaymentController controller) {
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
                   // height: 120,
                   child: DottedBorder(
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(12),
-                    dashPattern: const [4, 2],
-                    color: const Color(0XFFB7B7B7),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
                       child: Container(

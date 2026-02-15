@@ -116,11 +116,8 @@ class CouponCodeScreen extends StatelessWidget {
                             });
                           },
                           child: Container(
-                            color: Colors.black.withValues(alpha:0.05),
+                            color: Colors.black.withValues(alpha: 0.05),
                             child: DottedBorder(
-                              color: Colors.grey,
-                              strokeWidth: 1,
-                              dashPattern: const [3, 3],
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 5),

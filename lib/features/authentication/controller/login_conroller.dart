@@ -314,8 +314,9 @@ class LoginController extends GetxController {
 
   Future<UserCredential?> signInWithGoogle() async {
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+      await googleSignIn.initialize();
+      final GoogleSignInAccount? googleUser = await googleSignIn.authenticate();
 
       if (googleUser == null) {
         // User canceled the sign-in
@@ -324,11 +325,9 @@ class LoginController extends GetxController {
         return null;
       }
 
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
 
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
       // final GoogleSignInAccount? googleUser =

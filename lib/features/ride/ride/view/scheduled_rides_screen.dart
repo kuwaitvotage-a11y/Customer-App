@@ -59,10 +59,9 @@ class _ScheduledRidesScreenState extends State<ScheduledRidesScreen> {
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
-    return GetBuilder<ScheduledRideController>(
-      init: ScheduledRideController(),
-      builder: (controller) {
-        return WillPopScope(
+    final controller = Get.put(ScheduledRideController());
+    
+    return WillPopScope(
           onWillPop: () async {
             Get.back();
             return false;
@@ -95,8 +94,6 @@ class _ScheduledRidesScreenState extends State<ScheduledRidesScreen> {
             ),
           ),
         );
-      },
-    );
   }
 
   Widget _buildSearchBar(ScheduledRideController controller, bool isDarkMode) {

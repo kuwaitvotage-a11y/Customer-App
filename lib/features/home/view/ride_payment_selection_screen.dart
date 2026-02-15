@@ -367,19 +367,19 @@ class _RidePaymentSelectionScreenState
               ),
               child: SafeArea(
                 top: false,
-                child: GetBuilder<PaymentController>(
-                  builder: (paymentController) =>
-                      paymentController.paymentLoader != true
-                          ? CustomButton(
-                              btnName: widget.isSchedule
-                                  ? "${'schedule_ride'.tr} ${Constant().amountShow(amount: widget.tripPrice.toStringAsFixed(2))}"
-                                  : "${'confirm_pay'.tr} ${Constant().amountShow(amount: widget.tripPrice.toStringAsFixed(2))}",
-                              ontap: () => _handleBookRide(),
-                            )
-                          : const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                ),
+                child: Obx(() {
+                  final paymentController = Get.find<PaymentController>();
+                  return paymentController.paymentLoader != true
+                      ? CustomButton(
+                          btnName: widget.isSchedule
+                              ? "${'schedule_ride'.tr} ${Constant().amountShow(amount: widget.tripPrice.toStringAsFixed(2))}"
+                              : "${'confirm_pay'.tr} ${Constant().amountShow(amount: widget.tripPrice.toStringAsFixed(2))}",
+                          ontap: () => _handleBookRide(),
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                }),
               ),
             ),
           ],

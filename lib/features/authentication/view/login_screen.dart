@@ -53,10 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     bool isDarkMode = themeChange.getThem();
 
-    return GetBuilder<LoginController>(
-      init: LoginController(),
-      builder: (controller) {
-        return AuthScreenLayout(
+    final controller = Get.put(LoginController());
+    
+    return AuthScreenLayout(
           title: 'welcome_back'.tr,
           subtitle: 'login_subtitle'.tr,
           showBackButton: false,
@@ -237,8 +236,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         );
-      },
-    );
   }
 
   Future<void> _handleLogin(LoginController controller) async {

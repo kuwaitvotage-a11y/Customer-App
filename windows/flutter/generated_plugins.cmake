@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  clipboard
   cloud_firestore
   file_selector_windows
   firebase_auth

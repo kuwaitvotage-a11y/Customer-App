@@ -260,7 +260,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     );
 
     await flutterLocalNotificationsPlugin.initialize(
-      initSettings,
+      settings: initSettings,
       onDidReceiveNotificationResponse: (response) async {
         // Optional: Handle tap from system tray
       },
@@ -313,10 +313,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
     // Show system notification with sound (even if dialog is shown)
     await flutterLocalNotificationsPlugin.show(
-      id,
-      title,
-      body,
-      notificationDetails,
+      id: id,
+      title: title,
+      body: body,
+      notificationDetails: notificationDetails,
       payload: jsonEncode(message.data),
     );
 
@@ -600,7 +600,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       iOS: iosInitializationSettings,
     );
     await FlutterLocalNotificationsPlugin().initialize(
-      initializationSettings,
+      settings: initializationSettings,
       onDidReceiveNotificationResponse: (payload) async {},
     );
 
@@ -643,10 +643,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
       // Show system notification with sound (even if dialog is shown)
       await FlutterLocalNotificationsPlugin().show(
-        id,
-        title,
-        body,
-        notificationDetails,
+        id: id,
+        title: title,
+        body: body,
+        notificationDetails: notificationDetails,
         payload: jsonEncode(message.data),
       );
 
@@ -702,12 +702,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               Locale('ar', 'AE'),
               Locale('ur', 'PK'),
             ],
-            home: GetBuilder(
-              init: SettingsController(),
-              builder: (controller) {
-                return const SplashScreen();
-              },
-            ),
+            home: const SplashScreen(),
           );
         },
       ),

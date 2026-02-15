@@ -152,28 +152,24 @@ class _NewRideScreenState extends State<NewRideScreen>
 
   Widget _buildNormalRidesTab(
       NewRideController controller, DarkThemeProvider themeChange) {
-    return GetBuilder<NewRideController>(
-      builder: (controller) {
-        final isDark = themeChange.getThem();
-        return RefreshIndicator(
-          onRefresh: () => controller.getNewRide(forceRefresh: true),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Column(
-              children: [
-                // Search Bar
-                _buildSearchBar(controller, isDark),
-                const SizedBox(height: 12),
-                // Filter Tabs
-                _buildFilterTabs(controller, isDark),
-                Expanded(
-                  child: _buildRideListContent(controller, isDark),
-                ),
-              ],
+    final isDark = themeChange.getThem();
+    return RefreshIndicator(
+      onRefresh: () => controller.getNewRide(forceRefresh: true),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Column(
+          children: [
+            // Search Bar
+            _buildSearchBar(controller, isDark),
+            const SizedBox(height: 12),
+            // Filter Tabs
+            _buildFilterTabs(controller, isDark),
+            Expanded(
+              child: _buildRideListContent(controller, isDark),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 
@@ -451,29 +447,25 @@ class _NewRideScreenState extends State<NewRideScreen>
 
   Widget _buildScheduledRidesTab(
       ScheduledRideController controller, DarkThemeProvider themeChange) {
-    return GetBuilder<ScheduledRideController>(
-      builder: (controller) {
-        final isDark = themeChange.getThem();
-        return RefreshIndicator(
-          onRefresh: () => controller.getScheduledRides(forceRefresh: true),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Column(
-              children: [
-                // Search Bar
-                _buildScheduledSearchBar(controller, isDark),
-                const SizedBox(height: 12),
-                // Filter Tabs
-                _buildScheduledFilterTabs(controller, isDark),
-                const SizedBox(height: 12),
-                Expanded(
-                  child: _buildScheduledRideListContent(controller, isDark),
-                ),
-              ],
+    final isDark = themeChange.getThem();
+    return RefreshIndicator(
+      onRefresh: () => controller.getScheduledRides(forceRefresh: true),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Column(
+          children: [
+            // Search Bar
+            _buildScheduledSearchBar(controller, isDark),
+            const SizedBox(height: 12),
+            // Filter Tabs
+            _buildScheduledFilterTabs(controller, isDark),
+            const SizedBox(height: 12),
+            Expanded(
+              child: _buildScheduledRideListContent(controller, isDark),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 

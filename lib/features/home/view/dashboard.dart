@@ -24,11 +24,10 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashBoardController>(
-      init: DashBoardController(),
-      builder: (controller) {
-        controller.getDrawerItems();
-        return PopScope(
+    final controller = Get.put(DashBoardController());
+    controller.getDrawerItems();
+    
+    return PopScope(
           canPop: false,
           onPopInvoked: (didPop) async {
             if (didPop) return;
@@ -56,8 +55,6 @@ class _DashBoardState extends State<DashBoard> {
             body: const HomeScreen(),
           ),
         );
-      },
-    );
   }
 }
 

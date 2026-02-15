@@ -143,95 +143,87 @@ class _NewRideScreenState extends State<NewRideScreen>
 
   Widget _buildNormalRidesTab(
       NewRideController controller, DarkThemeProvider themeChange) {
-    return GetBuilder<NewRideController>(
-      builder: (controller) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: Column(
-            children: [
-              // Filter Tabs
-              _buildFilterTabs(controller, themeChange.getThem()),
-              const SizedBox(height: 12),
-              Expanded(
-                child: controller.isLoading.value
-                    ? const Center(child: CircularProgressIndicator())
-                    : controller.filteredRideList.isEmpty
-                        ? SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(Get.context!).size.height * 0.6,
-                              child: Constant.emptyView(
-                                  Get.context!,
-                                  controller.selectedFilter.value == 'all'
-                                      ? "You don't have any ride booked.".tr
-                                      : "${"No".tr} ${controller.selectedFilter.value.tr} ${"rides found.".tr}",
-                                  controller.selectedFilter.value == 'all'),
-                            ),
-                          )
-                        : ListView.builder(
-                            itemCount: controller.filteredRideList.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 16),
-                                child: NewRideScreen.newRideWidgets(
-                                    controller,
-                                    context,
-                                    controller.filteredRideList[index]),
-                              );
-                            }),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Column(
+        children: [
+          // Filter Tabs
+          _buildFilterTabs(controller, themeChange.getThem()),
+          const SizedBox(height: 12),
+          Expanded(
+            child: controller.isLoading.value
+                ? const Center(child: CircularProgressIndicator())
+                : controller.filteredRideList.isEmpty
+                    ? SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height:
+                              MediaQuery.of(Get.context!).size.height * 0.6,
+                          child: Constant.emptyView(
+                              Get.context!,
+                              controller.selectedFilter.value == 'all'
+                                  ? "You don't have any ride booked.".tr
+                                  : "${"No".tr} ${controller.selectedFilter.value.tr} ${"rides found.".tr}",
+                              controller.selectedFilter.value == 'all'),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: controller.filteredRideList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: NewRideScreen.newRideWidgets(
+                                controller,
+                                context,
+                                controller.filteredRideList[index]),
+                          );
+                        }),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 
   Widget _buildScheduledRidesTab(
       ScheduledRideController controller, DarkThemeProvider themeChange) {
-    return GetBuilder<ScheduledRideController>(
-      builder: (controller) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Column(
-            children: [
-              // Filter Tabs
-              _buildScheduledFilterTabs(controller, themeChange.getThem()),
-              const SizedBox(height: 12),
-              Expanded(
-                child: controller.isLoading.value
-                    ? const Center(child: CircularProgressIndicator())
-                    : controller.filteredRideList.isEmpty
-                        ? SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: SizedBox(
-                              height:
-                                  MediaQuery.of(Get.context!).size.height * 0.6,
-                              child: Constant.emptyView(
-                                  Get.context!,
-                                  controller.selectedFilter.value == 'all'
-                                      ? "You don't have any scheduled rides.".tr
-                                      : "${'No'.tr} ${controller.selectedFilter.value.tr} ${'rides found.'.tr}",
-                                  controller.selectedFilter.value == 'all'),
-                            ),
-                          )
-                        : ListView.builder(
-                            itemCount: controller.filteredRideList.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 16),
-                                child: scheduledRideWidget(controller, context,
-                                    controller.filteredRideList[index]),
-                              );
-                            }),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      child: Column(
+        children: [
+          // Filter Tabs
+          _buildScheduledFilterTabs(controller, themeChange.getThem()),
+          const SizedBox(height: 12),
+          Expanded(
+            child: controller.isLoading.value
+                ? const Center(child: CircularProgressIndicator())
+                : controller.filteredRideList.isEmpty
+                    ? SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height:
+                              MediaQuery.of(Get.context!).size.height * 0.6,
+                          child: Constant.emptyView(
+                              Get.context!,
+                              controller.selectedFilter.value == 'all'
+                                  ? "You don't have any scheduled rides.".tr
+                                  : "${'No'.tr} ${controller.selectedFilter.value.tr} ${'rides found.'.tr}",
+                              controller.selectedFilter.value == 'all'),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: controller.filteredRideList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: scheduledRideWidget(controller, context,
+                                controller.filteredRideList[index]),
+                          );
+                        }),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 

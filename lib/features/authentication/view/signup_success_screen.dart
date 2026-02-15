@@ -53,10 +53,9 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SignSuccessController>(
-      init: SignSuccessController(),
-      builder: (controller) {
-        return Scaffold(
+    final controller = Get.put(SignSuccessController());
+    
+    return Scaffold(
           body: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -220,7 +219,5 @@ class _SignUpSuccessScreenState extends State<SignUpSuccessScreen>
             ),
           ),
         );
-      },
-    );
   }
 }

@@ -44,6 +44,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     final isDarkMode = themeChange.getThem();
+    final controller = Get.put(DashBoardController());
 
     return Scaffold(
       backgroundColor:
@@ -53,11 +54,9 @@ class SettingsScreen extends StatelessWidget {
         showBackButton: true,
         onBackPressed: () => Get.back(),
       ),
-      body: GetBuilder<DashBoardController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            padding: const EdgeInsets.all(_pagePadding),
-            child: Column(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(_pagePadding),
+        child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 4),
@@ -229,10 +228,9 @@ class SettingsScreen extends StatelessWidget {
                 const SizedBox(height: 22),
               ],
             ),
-          );
-        },
-      ),
-    );
+          ),
+        );
+    
   }
 
   Widget _buildCard({required bool isDarkMode, required Widget child}) {

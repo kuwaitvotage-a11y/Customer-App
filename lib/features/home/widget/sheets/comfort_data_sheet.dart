@@ -265,10 +265,10 @@ Future conformDataBottomSheet(
                                         : AppThemeData.grey900,
                                   ),
                                   CustomText(
-                                    text: _getLocalizedVehicleName(
-                                        controller.vehicleData.value.libelle
-                                                ?.toString() ??
-                                            ''),
+                                    text: _getLocalizedVehicleName(controller
+                                            .vehicleData.value.libelle
+                                            ?.toString() ??
+                                        ''),
                                     size: 16,
                                     weight: FontWeight.w500,
                                     color: isDarkMode
@@ -557,8 +557,10 @@ Future conformDataBottomSheet(
                                                             CustomText(
                                                               text: clickIndex ==
                                                                       index
-                                                                  ? 'remove_code'.tr
-                                                                  : 'apply_code'.tr,
+                                                                  ? 'remove_code'
+                                                                      .tr
+                                                                  : 'apply_code'
+                                                                      .tr,
                                                               weight: FontWeight
                                                                   .w600,
                                                               color: Colors.red,
@@ -584,26 +586,19 @@ Future conformDataBottomSheet(
                                                                 ) {
                                                                   ShowToastDialog
                                                                       .showToast(
-                                                                    'coupon_code_copied'.tr,
+                                                                    'coupon_code_copied'
+                                                                        .tr,
                                                                   );
                                                                 });
                                                               },
                                                               child: Container(
                                                                 color: Colors
                                                                     .black
-                                                                    .withValues(alpha:
-                                                                  0.05,
+                                                                    .withValues(
+                                                                  alpha: 0.05,
                                                                 ),
                                                                 child:
                                                                     DottedBorder(
-                                                                  color: Colors
-                                                                      .grey,
-                                                                  strokeWidth:
-                                                                      1,
-                                                                  dashPattern: const [
-                                                                    3,
-                                                                    3,
-                                                                  ],
                                                                   child:
                                                                       Padding(
                                                                     padding:

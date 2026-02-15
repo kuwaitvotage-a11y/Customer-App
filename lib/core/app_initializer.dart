@@ -23,7 +23,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   log('📨 Background Message received: ${jsonEncode(message.data)}');
   log('📨 Notification: ${message.notification?.title} - ${message.notification?.body}');
 
@@ -37,7 +37,9 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     ),
   );
 
-  await backgroundNotificationPlugin.initialize(initSettings);
+  await backgroundNotificationPlugin.initialize(
+    settings: initSettings,
+  );
 
   // Initialize notification channel for Android
   if (Platform.isAndroid) {
@@ -79,10 +81,10 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     );
 
     await backgroundNotificationPlugin.show(
-      id,
-      message.notification?.title ?? 'Notification',
-      message.notification?.body ?? '',
-      notificationDetails,
+      id: id,
+      title: message.notification?.title ?? 'Notification',
+      body: message.notification?.body ?? '',
+      notificationDetails: notificationDetails,
       payload: jsonEncode(message.data),
     );
 
@@ -125,7 +127,9 @@ class AppInitializer {
         iOS: iosInit,
       );
 
-      await backgroundNotificationPlugin.initialize(initSettings);
+      await backgroundNotificationPlugin.initialize(
+        settings: initSettings,
+      );
     }
 
     // Request notification permissions
@@ -141,7 +145,7 @@ class AppInitializer {
     if (!Platform.isIOS) {
       final deviceInfo = DeviceInfoPlugin();
       final androidInfo = await deviceInfo.androidInfo;
-      
+
       // Use Hybrid Composition for Android API 29+
       if (androidInfo.version.sdkInt > 28) {
         final GoogleMapsFlutterPlatform mapsImplementation =

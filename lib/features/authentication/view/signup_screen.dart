@@ -38,22 +38,20 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
     bool isDarkMode = themeChange.getThem();
+    final controller = Get.put(SignUpController());
 
-    return GetBuilder<SignUpController>(
-      init: SignUpController(),
-      builder: (controller) {
-        // Strip country code (965 or +965) from phone number if present
-        String phoneArg = Get.arguments?['phoneNumber'] ?? "";
-        if (phoneArg.startsWith('+965')) {
-          phoneArg = phoneArg.substring(4);
-        } else if (phoneArg.startsWith('965')) {
-          phoneArg = phoneArg.substring(3);
-        }
-        if (phoneArg.isNotEmpty) {
-          controller.phoneNumber.value.text = phoneArg;
-        }
+    // Strip country code (965 or +965) from phone number if present
+    String phoneArg = Get.arguments?['phoneNumber'] ?? "";
+    if (phoneArg.startsWith('+965')) {
+      phoneArg = phoneArg.substring(4);
+    } else if (phoneArg.startsWith('965')) {
+      phoneArg = phoneArg.substring(3);
+    }
+    if (phoneArg.isNotEmpty) {
+      controller.phoneNumber.value.text = phoneArg;
+    }
 
-        return AuthScreenLayout(
+    return AuthScreenLayout(
           title: 'create_your_account'.tr,
           subtitle: 'signup_subtitle'.tr,
           bottomWidget: AuthBottomLink(
@@ -188,8 +186,6 @@ class _SignupScreenState extends State<SignupScreen> {
             ],
           ),
         );
-      },
-    );
   }
 
   Future<void> _handleSignUp(SignUpController controller) async {
