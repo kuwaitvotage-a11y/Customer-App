@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:cabme/core/constant/constant.dart';
 import 'package:cabme/features/home/controller/dash_board_controller.dart';
 import 'package:cabme/features/home/view/dashboard.dart';
-import 'package:cabme/features/settings/profile/controller/settings_controller.dart';
 import 'package:cabme/features/ride/ride/model/ride_model.dart';
 import 'package:cabme/features/ride/chat/view/conversation_screen.dart';
 import 'package:cabme/features/ride/ride/view/ride_details.dart';
@@ -17,7 +16,6 @@ import 'package:cabme/service/api.dart';
 import 'package:cabme/core/themes/styles.dart';
 import 'package:cabme/core/utils/Preferences.dart';
 import 'package:cabme/core/utils/dark_theme_provider.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -533,7 +531,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               ),
               'orderId': int.parse(
                 json.decode(message.data['message'])['orderId'].toString(),
-              ), 
+              ),
               'receiverName':
                   json.decode(message.data['message'])['senderName'].toString(),
               'receiverPhoto': json
@@ -672,10 +670,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             title: 'Mshwar',
             debugShowCheckedModeBanner: false,
             // Device Preview integration
-          //  locale: DevicePreview.locale(context) ?? currentLocale,
+            //  locale: DevicePreview.locale(context) ?? currentLocale,
             builder: (context, child) {
               // Wrap with Device Preview builder
-      //        child = DevicePreview.appBuilder(context, child);
+              //        child = DevicePreview.appBuilder(context, child);
               return Directionality(
                 textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                 child: EasyLoading.init()(context, child),
